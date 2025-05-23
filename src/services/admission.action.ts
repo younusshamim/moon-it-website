@@ -76,3 +76,22 @@ export const deleteAllAdmissions = async (
     };
   }
 };
+
+export const getAdmissions = async (): Promise<BaseResponseModel> => {
+  try {
+    await connectToDatabase();
+    const admissions = await Admission.find().sort({ createdAt: -1 });
+
+    return {
+      data: admissions,
+      status: "success",
+      message: "Admissions fetched successfully",
+    };
+  } catch (error) {
+    console.log({ error });
+    return {
+      status: "error",
+      message: "Failed to fetch admissions",
+    };
+  }
+};

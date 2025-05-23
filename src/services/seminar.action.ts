@@ -35,3 +35,22 @@ export const onJoinSeminar = async (
     };
   }
 };
+
+export const getSeminars = async (): Promise<BaseResponseModel> => {
+  try {
+    await connectToDatabase();
+    const seminars = await Seminar.find().sort({ createdAt: -1 });
+
+    return {
+      data: seminars,
+      status: "success",
+      message: "Seminars fetched successfully",
+    };
+  } catch (error) {
+    console.log({ error });
+    return {
+      status: "error",
+      message: "Failed to fetch seminars",
+    };
+  }
+};
