@@ -431,7 +431,7 @@ const courseList: CourseType[] = [
       "এ কোর্সটি Search Engine Optimization, Search Engine Marketing এবং Social Media Marketing সহ একটি Business গ্রোও করার সকল নিয়ম ও অনলাইন আয়ের কলাকৌশল নিয়ে গঠিত।",
     category: "it",
     image: "/courses/digital-marketing.jpg",
-    fee: 12500,
+    fee: 14500,
     discount: { type: "amount", value: 5000, endDate: "09/20/2024" },
     metorIds: [4],
     services: [
@@ -817,7 +817,7 @@ const courseList: CourseType[] = [
       "আমাদের এই কোর্সটিতে স্টুডেন্টদের বেসিক থেকে এডভান্স লেভেল ড্রয়িং শেখানো হবে। বেসিক সফটওয়্যার ইন্সটল করা থেকে A to Z সকল টুলস এর কাজ সহ প্রজেক্ট ভিত্তিক ফ্লোর প্ল্যান, ইলিভেশন, সেকশান, ফাউন্ডেশন ও বাস্তব সাইট সুপার ভিশন এর মাধ্যমে আমাদের এই কোর্সটি সাজানো।",
     category: "it",
     image: "/courses/auto-cad.jpg",
-    fee: 12500,
+    fee: 14500,
     discount: { type: "amount", value: 5000, endDate: "09/20/2024" },
     metorIds: [5],
     services: [
