@@ -53,6 +53,372 @@ const courseList: CourseType[] = [
         image: "/icons/recording.png",
       },
     ],
+    curriculum: [
+      {
+        title: "Introduction to Graphic Design",
+        modules: [
+          {
+            title: "Foundations of Graphic Design",
+            lessons: [
+              {
+                title: "What is Graphic Design?",
+                details: "Definition, purpose, and real-life applications",
+              },
+              {
+                title: "Demand for Graphic Design",
+                details: "Industry scope and opportunities",
+              },
+              {
+                title: "Role of a Graphic Designer",
+                details: "Local and international career paths",
+              },
+              {
+                title: "Course Module Overview",
+                details: "Learning roadmap and expectations",
+              },
+              {
+                title: "Software Installation & PC Requirements",
+                details: "Adobe Creative Suite setup and system specifications",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Photoshop for Beginners",
+        modules: [
+          {
+            title: "Getting Started with Photoshop",
+            lessons: [
+              {
+                title: "Introduction to Adobe Photoshop",
+                details: "Workspace and tools",
+              },
+              {
+                title: "Draw a National Flag",
+                details: "Hands-on beginner project",
+              },
+              {
+                title: "Passport, Stamp & 3R Image Setup",
+                details: "Practical exercises",
+              },
+              {
+                title: "Mastering the Pen Tool",
+                details: "Precise selection techniques",
+              },
+              {
+                title: "Shape Design with Gradients",
+                details: "Creative color blending",
+              },
+              {
+                title: "ID Card Design",
+                details: "Professional document creation",
+              },
+              {
+                title: "Travel Ad Banner",
+                details: "Advertisement design basics",
+              },
+              {
+                title: "Brush Customization",
+                details: "Using and creating custom brushes",
+              },
+              {
+                title: "Watermark Removal",
+                details: "Content editing techniques",
+              },
+              {
+                title: "Document Editing",
+                details: "Certificate, NID, Birth Certificate with Clone Stamp",
+              },
+              {
+                title: "File Formats & Color Modes",
+                details: "Smart Object, RGB, CMYK, Layer Management",
+              },
+              {
+                title: "Dress Color Change",
+                details: "Photo manipulation with clothing edits",
+              },
+              {
+                title: "Basic Photo Retouching",
+                details: "Improving image quality",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Illustrator for Beginners",
+        modules: [
+          {
+            title: "Getting Started with Illustrator",
+            lessons: [
+              {
+                title: "Introduction to Adobe Illustrator",
+                details: "Workspace and tools",
+              },
+              {
+                title: "Draw a National Flag",
+                details: "Beginner vector exercise",
+              },
+              {
+                title: "ID Card Design & File Formats",
+                details: "Practical design work",
+              },
+              {
+                title: "Illustrator Essentials",
+                details:
+                  "Align, Character, Paragraph, Arrange, Symbol, Transform, Transparency, Pathfinder, Gradient",
+              },
+              {
+                title: "Image Vector Tracing",
+                details: "Converting raster to vector",
+              },
+              { title: "Creating Shapes", details: "Shape design techniques" },
+            ],
+          },
+          {
+            title: "Printing Design Projects",
+            lessons: [
+              {
+                title: "Visiting Card / Business Card",
+                details: "Professional branding material",
+              },
+              {
+                title: "Letterhead & Invoice Design",
+                details: "Business stationery",
+              },
+              { title: "Event Pass / Post Card", details: "Event branding" },
+              { title: "Flyer Design", details: "Marketing design project" },
+              {
+                title: "Bi-fold & Tri-fold Brochure",
+                details: "Advanced layout design",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Design Principles & Creative Theory",
+        modules: [
+          {
+            title: "Core Design Principles",
+            lessons: [
+              {
+                title: "Design Principles",
+                details:
+                  "Contrast, Hierarchy, Proximity, Whitespace, Balance, Alignment, Repetition, Simplicity",
+              },
+              { title: "Color Theory", details: "Psychology and color usage" },
+              { title: "Typography", details: "Font usage and design impact" },
+              {
+                title: "Font Management",
+                details: "Organizing and using fonts",
+              },
+              {
+                title: "Golden Ratio & Rule of Thirds",
+                details: "Design balance techniques",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Photoshop Advanced",
+        modules: [
+          {
+            title: "Professional Photoshop Projects",
+            lessons: [
+              {
+                title: "Image Retouching",
+                details: "Advanced photo enhancements",
+              },
+              {
+                title: "Image Manipulation",
+                details: "Creative composite designs",
+              },
+              { title: "Poster Design", details: "Marketing poster creation" },
+              {
+                title: "Social Media Ads & Covers",
+                details: "Engaging online graphics",
+              },
+              {
+                title: "Mockup Presentation",
+                details: "Client-ready project presentation",
+              },
+              { title: "Billboard Design", details: "Large-scale advertising" },
+              {
+                title: "Thumbnail Design",
+                details: "YouTube and digital media thumbnails",
+              },
+              {
+                title: "Product Design & Branding",
+                details: "Packaging and brand identity",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Illustrator Advanced",
+        modules: [
+          {
+            title: "Professional Illustrator Projects",
+            lessons: [
+              { title: "Poster Design", details: "Mahfil/Political posters" },
+              {
+                title: "Invoice & Calendar Design",
+                details: "Wall & desk calendar projects",
+              },
+              {
+                title: "Book Cover Design",
+                details: "Creative publishing materials",
+              },
+              { title: "Typography Design", details: "Advanced font styling" },
+              {
+                title: "Packaging Design",
+                details: "Retail & e-commerce packaging",
+              },
+            ],
+          },
+          {
+            title: "Logo Design & Branding",
+            lessons: [
+              {
+                title: "Introduction to Logo Design",
+                details: "History and purpose",
+              },
+              {
+                title: "Logo Design Process",
+                details: "From concept to completion",
+              },
+              { title: "Sketch to Vector", details: "Practical logo creation" },
+              {
+                title: "Branding & Presentation",
+                details: "Identity systems and mockups",
+              },
+              {
+                title: "Case Studies & Practice",
+                details: "Real-world examples",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "AI-Powered Design Tools",
+        modules: [
+          {
+            title: "AI in Design",
+            lessons: [
+              {
+                title: "Free & Premium Tools",
+                details: "Exploring AI design resources",
+              },
+              {
+                title: "Prompt Engineering",
+                details: "Crafting effective prompts",
+              },
+              {
+                title: "AI Image Generation",
+                details: "Creating assets with AI",
+              },
+              {
+                title: "Social Media Design with AI",
+                details: "Smart content creation",
+              },
+              {
+                title: "AI Design Review",
+                details: "Analyzing and improving designs with AI",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Professional Development",
+        modules: [
+          {
+            title: "Building a Creative Career",
+            lessons: [
+              {
+                title: "Portfolio Development",
+                details: "Showcasing your best work",
+              },
+              { title: "Market Research", details: "Finding opportunities" },
+              { title: "Pricing Models", details: "Setting competitive rates" },
+              {
+                title: "Marketing for Designers",
+                details: "Personal branding & outreach",
+              },
+            ],
+          },
+          {
+            title: "Job & Freelancing Pathways",
+            lessons: [
+              {
+                title: "Local Marketplace Jobs",
+                details: "Employment opportunities",
+              },
+              {
+                title: "Freelancing Platforms",
+                details: "Upwork, Fiverr, and beyond",
+              },
+              {
+                title: "Remote Work Guidelines",
+                details: "Working internationally",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Additional Facilities & Support",
+        modules: [
+          {
+            title: "Course Conditions & Benefits",
+            lessons: [
+              {
+                title: "Attendance Requirement",
+                details: "Minimum 90% class attendance",
+              },
+              {
+                title: "Trainer’s Instructions",
+                details: "Following guidance for success",
+              },
+              { title: "Lifetime Support", details: "Post-course mentoring" },
+              {
+                title: "Recorded Classes",
+                details: "Access to video recordings",
+              },
+              {
+                title: "Real Case Studies",
+                details: "Industry-based learning",
+              },
+              {
+                title: "Premium Source Files & Kits",
+                details: "Exclusive resources",
+              },
+              {
+                title: "Dedicated Facebook Group",
+                details: "Networking and support",
+              },
+              {
+                title: "Practice Lab Support",
+                details: "Hands-on practice opportunities",
+              },
+              {
+                title: "Virtual Internship",
+                details: "Practical work experience",
+              },
+              {
+                title: "Career Guidance",
+                details: "Long-term professional success",
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   {
     id: 2,
