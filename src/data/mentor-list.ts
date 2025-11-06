@@ -40,9 +40,9 @@ const mentorList: MentorType[] = [
   },
   {
     id: 5,
-    name: "নুরুল ইসলাম",
+    name: "ইঞ্জি. ইব্রাহিম খলিল",
     title: "ইন্সট্রাক্টর - অটোক্যাড এন্ড ইস্টিমেট-কস্টিং প্রোগ্রাম",
-    picture: "/instructors/nurul-islam.png",
+    picture: "/instructors/ibrahim-kholil.jpeg",
   },
   {
     id: 6,
@@ -52,9 +52,9 @@ const mentorList: MentorType[] = [
   },
   {
     id: 7,
-    name: "আবদুল্লাহ রিয়াদ জয়",
+    name: "শেজানুল হক চৌধুরী",
     title: "ইন্সট্রাক্টর - স্পোকেন ইংলিশ এন্ড IELTS",
-    picture: "/instructors/abdulah-riyad-joy.png",
+    picture: "/instructors/shezanul-hoque-chowdhury.jpeg",
   },
   {
     id: 9,
