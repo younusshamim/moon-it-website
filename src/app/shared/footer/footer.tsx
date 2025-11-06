@@ -52,8 +52,7 @@ const Footer = () => {
             <div className="flex gap-3 items-center mb-3">
               <IoLocationSharp className="text-2xl" />
               <p>
-                মনোয়ারা ম্যানশন, স্টেডিয়াম রোড, একাডেমী <br /> (আইয়ুব আলী
-                চেম্বার/নুরিয়া মসজিদ সংলগ্ন), ফেনী।
+               শরিফা প্লাজা ৩য় তলা (জনতা ব্যাংকের উপরে), রেল গেইট, ফেনী সদর, ফেনী।
               </p>
             </div>
 

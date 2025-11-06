@@ -29,8 +29,7 @@ const Address = () => {
               <div className="flex gap-3 items-center mb-3">
                 <IoLocationSharp className="text-2xl" />
                 <h2 className="w-full">
-                  মনোয়ারা ম্যানশন, স্টেডিয়াম রোড, একাডেমী (আইয়ুব আলী
-                  চেম্বার/নূরীয়া মসজিদ সংলগ্ন), ফেনী।
+                শরিফা প্লাজা ৩য় তলা (জনতা ব্যাংকের উপরে), রেল গেইট, ফেনী সদর, ফেনী।
                 </h2>
               </div>
             </StaggerItem>
