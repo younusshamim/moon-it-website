@@ -13,18 +13,18 @@ const affiliatedList: AffiliatedType[] = [
   },
   {
     icon: "/logo/BTEB-Logo.png",
-    title: "কারিগরি শিক্ষাবোর্ড",
+    title: "কারিগরি শিক্ষা বোর্ড",
     description:
-      "গনপ্রজাতন্ত্রী বাংলাদেশ সরকারের কারিগরি শিক্ষাবোর্ড কর্তৃক অনুমোদিত।",
+      "গনপ্রজাতন্ত্রী বাংলাদেশ সরকারের কারিগরি শিক্ষা বোর্ড কর্তৃক অনুমোদিত।",
     affiliatedNo: "BTEB কোড- ৬৯০৩২",
     website: "https://bteb.gov.bd/",
     pdf: "/affiliated-pdf/bteb.pdf",
   },
   {
     icon: "/logo/NSDA.png",
-    title: "প্রধানমন্ত্রীর কার্যালয়",
+    title: "জাতীয় দক্ষতা উন্নয়ন কর্তৃপক্ষ",
     description:
-      "গনপ্রজাতন্ত্রী বাংলাদেশ সরকারের প্রধানমন্ত্রীর কার্যালয় (NSDA) কর্তৃক অনুমোদিত।",
+      "গনপ্রজাতন্ত্রী বাংলাদেশ সরকারের জাতীয় দক্ষতা উন্নয়ন কর্তৃপক্ষ (NSDA) কর্তৃক অনুমোদিত।",
     affiliatedNo: "রেজিস্ট্রেশন নং- STP-FEN-000874",
     website: "https://nsda.gov.bd/",
     pdf: "/affiliated-pdf/nsda.pdf",
