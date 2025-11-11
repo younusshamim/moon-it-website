@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import InitialPopup from "@/components/initial-popup";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,6 +51,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <NextProgress />
           <Toaster />
+          <InitialPopup />
           {children}
         </ThemeProvider>
       </body>
