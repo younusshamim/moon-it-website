@@ -10,35 +10,34 @@ import {
 import { X } from 'lucide-react'
 
 const STORAGE_KEY = 'promotionPopupClosedAt'
-const COOLDOWN_HOURS = 6
-const COOLDOWN_MS = COOLDOWN_HOURS * 60 * 60 * 1000 // 6 hours in milliseconds
+const COOLDOWN_MS = 5 * 60 * 1000 //  5 minutes in milliseconds
 
 const InitialPopup = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
 
-  useEffect(() => {
-    // Check if we should show the dialog
-    const checkShouldShow = () => {
-      if (typeof window === 'undefined') return false
+  // useEffect(() => {
+  //   // Check if we should show the dialog
+  //   const checkShouldShow = () => {
+  //     if (typeof window === 'undefined') return false
 
-      const closedAt = localStorage.getItem(STORAGE_KEY)
+  //     const closedAt = localStorage.getItem(STORAGE_KEY)
       
-      if (!closedAt) {
-        // Never closed before, show it
-        return true
-      }
+  //     if (!closedAt) {
+  //       // Never closed before, show it
+  //       return true
+  //     }
 
-      const closedTimestamp = parseInt(closedAt, 10)
-      const now = Date.now()
-      const timeSinceClose = now - closedTimestamp
+  //     const closedTimestamp = parseInt(closedAt, 10)
+  //     const now = Date.now()
+  //     const timeSinceClose = now - closedTimestamp
 
-      // Show if 6 hours have passed
-      return timeSinceClose >= COOLDOWN_MS
-    }
+  //     // Show if 6 hours have passed
+  //     return timeSinceClose >= COOLDOWN_MS
+  //   }
 
-    const shouldShow = checkShouldShow()
-    setIsOpen(shouldShow)
-  }, [])
+  //   const shouldShow = checkShouldShow()
+  //   setIsOpen(shouldShow)
+  // }, [])
 
   const handleOpenChange = (open: boolean) => {
     if (!open) {
@@ -49,6 +48,14 @@ const InitialPopup = () => {
     }
     setIsOpen(open)
   }
+
+  useEffect(() => {
+    if (!isOpen) {
+    setTimeout(() => {
+        handleOpenChange(true)
+      }, COOLDOWN_MS)
+    }
+  }, [isOpen])
 
   return (
     <AlertDialog open={isOpen} onOpenChange={handleOpenChange}>
