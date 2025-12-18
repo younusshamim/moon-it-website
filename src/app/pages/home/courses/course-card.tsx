@@ -37,7 +37,7 @@ const CourseCard = ({ course, className }: PropsTypes) => {
             : course.title}
         </p>
 
-        <Link href={`/courses/${course.id}`}>
+        <Link href={`/courses/${course.slug}`}>
           <PrimaryButton
             iconRight={<FaArrowRight className="text-primary" />}
             variant="outline"

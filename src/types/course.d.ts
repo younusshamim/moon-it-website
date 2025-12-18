@@ -22,6 +22,7 @@ export type CurriculumSectionType = {
 export interface CourseType {
   id: number;
   name: string;
+  slug: string;
   title: string;
   description1?: string;
   description2?: string;

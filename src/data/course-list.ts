@@ -4,6 +4,7 @@ const courseList: CourseType[] = [
   {
     id: 1,
     name: "প্রফেশনাল গ্রাফিক ডিজাইন",
+    slug: "professional-graphic-design",
     title:
       "এ কোর্সটি বিজনেজ কার্ড, আইডি কার্ড, লগো ডিজাইন, ব্রোশিওর ডিজাইন, ক্যালেন্ডার ডিজাইন, লেটারহেড, ফ্লায়ার কার্ড ও মকাপ ডিজাইন সহ প্রায় ৫০টি প্রজেক্ট ডিজাইনের সমন্বয়ে গঠিত।",
     description1:
@@ -423,6 +424,7 @@ const courseList: CourseType[] = [
   {
     id: 2,
     name: "ডিজিটাল মার্কেটিং উইথ ফ্রিল্যান্সিং",
+    slug: "digital-marketing-with-freelancing",
     title:
       "এ কোর্সটি Search Engine Optimization, Search Engine Marketing এবং Social Media Marketing সহ একটি Business গ্রোও করার সকল নিয়ম ও অনলাইন আয়ের কলাকৌশল নিয়ে গঠিত।",
     description1:
@@ -809,6 +811,7 @@ const courseList: CourseType[] = [
   {
     id: 3,
     name: "অটোক্যাড 2D & 3D",
+    slug: "auto-cad-2d-3d",
     title:
       "AutoCAD- Computer Aided Design একটি ইঞ্জিনিয়ারিং ড্রয়িং প্রোগ্রামের নাম। সহজে বললে অটোক্যাড একটি ডিজাইন ও ড্রাফটিং সফটওয়্যার।",
     description1:
@@ -1114,6 +1117,7 @@ const courseList: CourseType[] = [
   {
     id: 5,
     name: "কম্পিউটার আইটি সাপোর্ট সার্ভিসেস",
+    slug: "computer-it-support-services",
     title:
       "এ কোর্সটি ইংরেজি টাইপিং, বাংলা টাইপিং সহ  Ms Word, Ms Excel, Ms Power Point,  Ms Access ও বেসিক হার্ডওয়্যার, সফটওয়্যার, নেটওয়ার্কিং, এসেম্বলিং, ডি-এসেম্বলিং ও ট্রাবলসুটিং ইত্যাদি কাজ নিয়ে গঠিত।",
     description1:
@@ -1167,6 +1171,7 @@ const courseList: CourseType[] = [
   {
     id: 4,
     name: "কম্পিউটার অফিস অ্যাপ্লিকেশন",
+    slug: "computer-office-application",
     title:
       "এ কোর্সটি ইংরেজি টাইপিং, বাংলা টাইপিং সহ  Ms Word, Ms Excel, Ms Power Point,  Ms Access ও বেসিক হার্ডওয়্যার, সফটওয়্যারের কাজ নিয়ে গঠিত।",
     description1:
@@ -1220,6 +1225,7 @@ const courseList: CourseType[] = [
   {
     id: 6,
     name: "নেটওয়ার্কিং (CCNA, MTCNA)",
+    slug: "networking-ccna-mtcna",
     title:
       "বেসিক নেটওয়ার্কিং থেকে শুরু করে Routing Protocol, Switching Protocol, সহ Server Mantainace এর বেশ কিছু প্রটোকল নিয়ে এ কোর্সটি সাজানো হয়েছে।",
     description1:
@@ -1273,6 +1279,7 @@ const courseList: CourseType[] = [
   {
     id: 7,
     name: "ওয়েব ডিজাইন এন্ড ডেভেলপমেন্ট",
+    slug: "web-design-and-development",
     title:
       "এই কোর্সটিতে HTML, CSS, JavaScript, jQuery, Bootstrap, Tailwind CSS, PHP, Laravel, MySQL ব্যাসিক টু এডভান্স শেখানো হবে এবং প্রফেশনাল কিছু ওয়েব সাইট তৈরি করার মাধ্যমে কোর্সটি সম্পন্ন করা হবে।",
     description1:
@@ -1326,6 +1333,7 @@ const courseList: CourseType[] = [
   {
     id: 8,
     name: "স্পোকেন ইংলিশ",
+    slug: "spoken-english",
     title:
       "ইংরেজিতে সাবলীলভাবে কথা বলতে পারা এই যুগে একটি গুরুত্বপূর্ণ দক্ষতা ও স্মার্টনেস। স্পোকেন ইংলিশ স্কিল থাকলে জীবনের প্রতিটি পর্যায়েই এগিয়ে থাকা যায়। পড়াশোনা, ক্যারিয়ার, প্রতিযোগিতামূলক পরীক্ষা, বিদেশে উচ্চশিক্ষা, এমনকি বিদেশ ভ্রমণের ক্ষেত্রে ও ইংরেজি বলার বা ইংরেজির সঠিক উচ্চারণের দক্ষতা অর্জন বেশ জরুরি।",
     description1:
@@ -1379,7 +1387,8 @@ const courseList: CourseType[] = [
   },
   {
     id: 9,
-    name: "অ্যারাবিক ল্যাঙ্গুয়েজ",
+    name: "অ্যারাবিক ল্যাঙ্গুয়েজ", 
+    slug: "arabic-language",
     title:
       "এ কোর্সের মাধ্যমে প্রচলিত আরবি শব্দভান্ডার, বেসিক ছরফ, বেসিক নাহু, বহুল পাঠিত কোরআনের ছোট সূরা গুলোর শাব্দিক বঙ্গানুবাদ, ছোট-বড় বাক্য গঠন সহ যেকোন পরিবেশে আরবি ভাষায় প্রেজেন্টেশনের দক্ষতা তৈরী হবে। ইনশাআল্লাহ।",
     description1:
@@ -1435,6 +1444,7 @@ const courseList: CourseType[] = [
   {
     id: 10,
     name: "কোরিয়ান ল্যাঙ্গুয়েজ",
+    slug: "korean-language",
     title:
       "বাংলাদেশিদের কোরিয়ান ভাষা শিখার প্রধান কারন হচ্ছে কোরিয়াতে গিয়ে চাকরি করা অথবা পড়াশুনা করা। প্রযুক্তির দিক থেকে যে দেশ গুলো পৃথিবীতে শীর্ষে তার মধ্যে কোরিয়া অন্যতম। কোরিয়া হচ্ছে প্রযুক্তিগত দিক দিয়ে পুরো বিশ্বের গুরু। সেক্ষেত্রে কোরিয়ান ভাষা শিখে খুব সহজেই কোরিয়াতে গিয়ে আপনি পড়াশোনা এবং ভালো বেতনে চাকরি করতে পারবেন।",
     description1:
@@ -1487,6 +1497,7 @@ const courseList: CourseType[] = [
   {
     id: 11,
     name: "জাপানিজ ল্যাঙ্গুয়েজ",
+    slug: "japanese-language",
     title:
       "মুন আইটি’তে জাপানিজ ভাষার দুটি কোর্স N5/N4 চলমান রয়েছে। একবারে হিরাগানা, কাতাগানা বর্ণমালা থেকে শুরু করে  সহজ ও সাবলিল ভাবে বাংলা ভাষার মাধ্যমে জাপানিজ ভাষা ও জাপানিজ সংস্কৃতি শিখোনো হয়।",
     description1:
@@ -1560,6 +1571,7 @@ const courseList: CourseType[] = [
   {
     id: 20,
     name: "জার্মান ল্যাঙ্গুয়েজ",
+    slug: "german-language",
     title:
       "মুন আইটি’তে জার্মান ভাষার তিনটি কোর্স A1/ A2/ B1 চলমান রয়েছে। একদম বেসিক থেকে শুরু করে  সহজ ও সাবলিল ভাবে বাংলা ভাষার মাধ্যমে জার্মান ভাষা শিখতে পারবেন এই কোর্সটিতে।",
     description1:
@@ -1614,6 +1626,7 @@ const courseList: CourseType[] = [
   {
     id: 12,
     name: "ফাইন আর্টস টেকনোলজি- চারুকলা",
+    slug: "fine-arts-technical-arts",
     title:
       "আপনি যদি MPO ভুক্ত স্কুল/মাদ্রাসায় ১০ম/১১তম গ্রেডে চারু ও কারুকলা বিষয়ে সহকারী শিক্ষক হিসেবে চাকরিতে আগ্রহী হোন তাহলে ১বছর মেয়াদি এ্যাডভান্সড সার্টিফিকেট এই কোর্সটি আপনার জন্য",
     description1:
@@ -1667,6 +1680,7 @@ const courseList: CourseType[] = [
   {
     id: 13,
     name: "কম্পিউটার টেকনোলজি - ICT",
+    slug: "computer-it-support-services",
     title:
       "আপনি যদি MPO ভুক্ত স্কুল/মাদ্রাসায় ১০ম/১১তম গ্রেডে ICT বিষয়ে সহকারী শিক্ষক হিসেবে চাকরিতে আগ্রহী হোন তাহলে ১বছর মেয়াদি এ্যাডভান্সড সার্টিফিকেট এই কোর্সটি আপনার জন্য।",
     description1:
@@ -1720,6 +1734,7 @@ const courseList: CourseType[] = [
   {
     id: 14,
     name: "কম্পিউটার সায়েন্স টেকনোলজি",
+    slug: "computer-science-technology",
     title:
       "এ কোর্সে মূলত, Computer Science, Civil, Architecture ও Electrical ইঞ্জিনিয়ারদের একাডেমিক ক্যারিকুলাম অনুযায়ী ট্রেনিং করানো হবে। ",
     description1:
@@ -1773,6 +1788,7 @@ const courseList: CourseType[] = [
   {
     id: 15,
     name: "ডাটা টেলিকমিউনিকেশন এন্ড নেটওয়ার্ক টেকনোলজি",
+    slug: "data-telecomunication-and-networking",
     title:
       "এ কোর্সে মূলত, Computer Science, Civil, Architecture ও Electrical ইঞ্জিনিয়ারদের একাডেমিক ক্যারিকুলাম অনুযায়ী ট্রেনিং করানো হবে। ",
     description1:
@@ -1825,7 +1841,8 @@ const courseList: CourseType[] = [
   },
   {
     id: 16,
-    name: "সিভিল টেকনোলজি টেকনোলজি",
+    name: "সিভিল টেকনোলজি",
+    slug: "civil-technology",
     title:
       "এ কোর্সে মূলত, Computer Science, Civil, Architecture ও Electrical ইঞ্জিনিয়ারদের একাডেমিক ক্যারিকুলাম অনুযায়ী ট্রেনিং করানো হবে। ",
     description1:
@@ -1879,6 +1896,7 @@ const courseList: CourseType[] = [
   {
     id: 17,
     name: "আর্কিটেকচার এন্ড ইন্টেরিয়র টেকনোলজি",
+    slug: "architectural-and-interior-technology",
     title:
       "এ কোর্সে মূলত, Computer Science, Civil, Architecture ও Electrical ইঞ্জিনিয়ারদের একাডেমিক ক্যারিকুলাম অনুযায়ী ট্রেনিং করানো হবে। ",
     description1:

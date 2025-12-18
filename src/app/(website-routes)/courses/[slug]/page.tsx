@@ -10,18 +10,18 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type PropsTypes = {
-  params: { id: string };
+  params: { slug: string };
 };
 
 export async function generateStaticParams() {
-  return courseList.map((course) => ({ params: { id: course.id.toString() } }));
+  return courseList.map((course) => ({ params: { slug: course.slug } }));
 }
 
 export async function generateMetadata({
   params,
 }: PropsTypes): Promise<Metadata> {
-  const id = parseInt(params.id);
-  const targetCourse = courseList.find((course) => course.id === id);
+  const {slug} = params;
+  const targetCourse = courseList.find((course) => course.slug === slug);
   return {
     title: targetCourse?.name,
     description: `${targetCourse?.description1} ${targetCourse?.description2}`,
@@ -37,8 +37,8 @@ export async function generateMetadata({
 }
 
 const Course = ({ params }: PropsTypes) => {
-  const id = parseInt(params.id);
-  const targetCourse = courseList.find((course) => course.id === id);
+  const {slug} = params;
+  const targetCourse = courseList.find((course) => course.slug === slug);
   const mentors = mentorList.filter((mentor) =>
     targetCourse?.metorIds.includes(mentor.id)
   );
