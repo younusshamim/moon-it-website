@@ -68,7 +68,13 @@ const InitialPopup = () => {
             height={600}
             className="w-full h-auto rounded-lg"
           />
-         <span className='absolute right-2 top-2 bg-white hover:bg-white/80 cursor-pointer text-black' onClick={() => handleOpenChange(false)}><X className='w-4 h-4' /></span>
+          <button
+            className='absolute right-[-10px] top-[-12px] bg-white/90 border hover:bg-white rounded-full p-1.5 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer text-black z-10'
+            onClick={() => handleOpenChange(false)}
+            aria-label="Close promotion"
+          >
+            <X className='w-4 h-4' />
+          </button>
         </div>
       </AlertDialogContent>
     </AlertDialog>

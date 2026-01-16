@@ -17,7 +17,7 @@ const AboutUs = () => {
 
           <h2 className="text-4xl text-foreground-dark font-extrabold mb-4">
             <GradientText>
-              সাফল্যের <span className="font-sans">২০</span> বছরে
+              সাফল্যের <span className="font-sans">২১</span> বছরে
             </GradientText>{" "}
             আইটি এক্সপার্ট তৈরির জগতে ফেনীর বিশ্বস্ত প্রতিষ্ঠান
           </h2>
