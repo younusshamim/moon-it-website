@@ -1680,7 +1680,7 @@ const courseList: CourseType[] = [
   {
     id: 13,
     name: "কম্পিউটার টেকনোলজি - ICT",
-    slug: "computer-it-support-services",
+    slug: "computer-technology",
     title:
       "আপনি যদি MPO ভুক্ত স্কুল/মাদ্রাসায় ১০ম/১১তম গ্রেডে ICT বিষয়ে সহকারী শিক্ষক হিসেবে চাকরিতে আগ্রহী হোন তাহলে ১বছর মেয়াদি এ্যাডভান্সড সার্টিফিকেট এই কোর্সটি আপনার জন্য।",
     description1:
