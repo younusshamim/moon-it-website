@@ -54,7 +54,7 @@ const mentorList: MentorType[] = [
     id: 7,
     name: "শেজানুল হক চৌধুরী",
     title: "ইন্সট্রাক্টর - স্পোকেন ইংলিশ এন্ড IELTS",
-    picture: "/instructors/shezanul-hoque-chowdhury.png",
+    picture: "/instructors/shezanul-hoque-khan.png",
   },
   {
     id: 9,
@@ -80,6 +80,12 @@ const mentorList: MentorType[] = [
     title: "ইন্সট্রাক্টর - জার্মান ল্যাঙ্গুয়েজ",
     picture: "/instructors/male-instructor.png",
   },
+  {
+    id: 14,
+    name: "সিরাজ উদ্দিন",
+    title: "ইন্সট্রাক্টর - ইতালিয়ান ল্যাঙ্গুয়েজ",
+    picture: "/instructors/sirajuddin.png",
+  }
 ];
 
 export default mentorList;

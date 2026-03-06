@@ -62,7 +62,7 @@ const InitialPopup = () => {
       <AlertDialogContent className="w-[93%] sm:w-[90%] md:max-w-[600px] p-0 rounded-lg">
         <div className="relative">
           <Image 
-            src='/images/promotion/promotion3.jpeg' 
+            src='/images/promotion/promotion4.jpeg' 
             alt='Promotional Offer' 
             width={600} 
             height={600}
