@@ -52,7 +52,7 @@ const mentorList: MentorType[] = [
   },
   {
     id: 7,
-    name: "শেজানুল হক চৌধুরী",
+    name: "ফয়জুল করিম সিয়াম",
     title: "ইন্সট্রাক্টর - স্পোকেন ইংলিশ এন্ড IELTS",
     picture: "/instructors/shezanul-hoque-khan.png",
   },
