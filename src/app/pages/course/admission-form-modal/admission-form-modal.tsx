@@ -12,8 +12,7 @@ import { admissionSchema } from "@/schemas/zod/admission.schema";
 import { onAdmission } from "@/services/admission.action";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { useFormState } from "react-dom";
+import { startTransition, useActionState, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 
@@ -28,7 +27,7 @@ type PropsTypes = {
 }
 
 const AdmissionFormModal = ({ isOpen, setIsOpen, setSubmittedModal, feeAfterDiscount, courseId, isDiscount }: PropsTypes) => {
-  const [state, formAction] = useFormState<BaseResponseModel<null>, FormData>(onAdmission, null);
+  const [state, formAction] = useActionState<BaseResponseModel<null>, FormData>(onAdmission, null);
   const [submitting, setSubmitting] = useState(false)
 
   const methods = useForm<any>({
@@ -49,7 +48,9 @@ const AdmissionFormModal = ({ isOpen, setIsOpen, setSubmittedModal, feeAfterDisc
   })
 
   const onSubmit = handleSubmit((data) => {
-    formAction(data);
+    startTransition(() => {
+      formAction(data);
+    });
     setSubmitting(true)
   })
 

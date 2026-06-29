@@ -22,7 +22,7 @@ const ElasticScroll = ({
         scale: [null, 1.1 * intensity, 0.9 * intensity, 1.05 * intensity, 1],
       }}
       transition={{
-        type: "spring",
+        type: "spring" as const,
         stiffness: 300,
         damping: 15,
         times: [0, 0.4, 0.6, 0.8, 1],

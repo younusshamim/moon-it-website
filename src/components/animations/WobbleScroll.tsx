@@ -31,7 +31,7 @@ const WobbleScroll = ({
         scale: 1,
       }}
       transition={{
-        type: "spring",
+        type: "spring" as const,
         damping: 12,
         stiffness: 200,
         times: [0, 0.2, 0.4, 0.6, 0.8, 0.9, 1],

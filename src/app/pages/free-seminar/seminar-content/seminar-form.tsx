@@ -12,14 +12,13 @@ import { seminarSchema, } from "@/schemas/zod/seminar.schema";
 import { onJoinSeminar } from "@/services/seminar.action";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useFormState } from "react-dom";
+import { useActionState, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 
 const SeminarForm = () => {
     const [submittdModal, setSubmittedModal] = useState(false);
-    const [state, formAction] = useFormState<BaseResponseModel<null>, FormData>(onJoinSeminar, null);
+    const [state, formAction] = useActionState<BaseResponseModel<null>, FormData>(onJoinSeminar, null);
     const [submitting, setSubmitting] = useState(false)
 
     // hooks 

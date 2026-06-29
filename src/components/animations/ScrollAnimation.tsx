@@ -1,11 +1,11 @@
 "use client";
 
 import { HTMLMotionProps, motion } from "framer-motion";
-import { ReactNode, ComponentProps } from "react";
+import { ReactNode } from "react";
 
-interface ScrollAnimationProps extends ComponentProps<typeof motion.div> {
+interface ScrollAnimationProps extends Omit<HTMLMotionProps<"div">, "animate"> {
   children: ReactNode;
-  animate?: object;
+  animate?: HTMLMotionProps<"div">["whileInView"];
 }
 
 const ScrollAnimation = ({

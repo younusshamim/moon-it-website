@@ -19,7 +19,7 @@ const BounceScroll = ({
       initial={{ opacity: 0, scale: 0.3, y: 50 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{
-        type: "spring",
+        type: "spring" as const,
         stiffness: 300,
         damping: 20,
         bounce,
