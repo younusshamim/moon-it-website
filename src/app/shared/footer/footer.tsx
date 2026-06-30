@@ -4,6 +4,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { IoIosCall, IoLogoYoutube } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
+import TrustBar from "@/app/shared/affiliation/trust-bar";
 import Container from "@/components/container";
 
 const Footer = () => {
@@ -97,6 +98,10 @@ const Footer = () => {
         </div>
 
         <hr className="border border-muted my-10" />
+
+        <TrustBar className="mb-10" />
+
+        <hr className="border border-muted mb-10" />
 
         <p className="text-center">
           কপিরাইট ©{new Date().getFullYear()} মুন আইটি ট্রেইনিং ইনস্টিটিউট। সর্বস্বত্ব

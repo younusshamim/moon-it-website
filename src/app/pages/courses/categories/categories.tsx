@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Container from "@/components/container";
-import categories from "@/data/categories";
+import {categoryList} from "@/data/categories";
 import scrollToSection from "@/lib/utils/scrollToSection";
 
 type PropsType = {
@@ -16,7 +16,7 @@ const Categories = ({ courseRef }: PropsType) => {
       </h1>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5 overflow-y-auto">
-        {categories.map((category, index) => (
+        {categoryList.map((category, index) => (
           <div
             key={category.label + index}
             className="bg-background2 dark:bg-card shadow-sm p-5 lg:p-8 rounded-card text-center flex items-center justify-center cursor-pointer"

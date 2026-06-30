@@ -13,10 +13,10 @@ const navItems: NavItemType[] = [
     name: "আমাদের সম্পর্কে",
     link: "/about-us",
   },
-  {
-    name: "ফটো গ্যালারি",
-    link: "/photo-gallery",
-  },
+  // {
+  //   name: "ফটো গ্যালারি",
+  //   link: "/photo-gallery",
+  // },
   {
     name: "যোগাযোগ",
     link: "/contact",

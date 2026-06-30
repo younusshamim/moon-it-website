@@ -20,7 +20,7 @@ const CourseInstructors = ({ instructors }: { instructors: Instructor[] }) => {
               className="flex w-full max-w-[460px] items-center gap-5 rounded-card border border-muted bg-background2 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:w-[440px]"
             >
               <Image
-                className="h-20 w-20 shrink-0 rounded-full border-2 border-primary/20 bg-card object-cover"
+                className="h-20 w-20 shrink-0 rounded-full border-2 border-primary/20 bg-card object-cover object-top"
                 width={80}
                 height={80}
                 src={instructor.picture}

@@ -11,22 +11,25 @@ import { Carousel } from "@/components/carousel";
 import Container from "@/components/container";
 import GradientText from "@/components/gradient-text";
 import PrimaryButton from "@/components/primary-button";
-import Tabs from "@/components/tabs";
 import { CarouselItem } from "@/components/ui/carousel";
-import categories from "@/data/categories";
+import {categoryList, CategoryName} from "@/data/categories";
 import { courses as courseList } from "@/data/course-list";
 import getOptions from "@/lib/utils/get-options";
+import CategoryTabs from "./category-tabs";
 import CourseCardNew from "./course-card-new";
 
 const Courses = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | number>(
-    "language",
+  const [selectedCategory, setSelectedCategory] = useState<CategoryName>(
+    "it-course"
   );
   const courses = useMemo(
     () => courseList.filter((course) => course.category === selectedCategory),
     [selectedCategory],
   );
-  const tabOptions = getOptions(categories, "label", "name");
+  const tabOptions = categoryList.map((item) => ({
+    label: String(item.label),
+    value: item.name,
+  }));
 
   return (
     <div className="bg-card border-b border-muted section-padding-sm">
@@ -38,7 +41,7 @@ const Courses = () => {
           প্রতিটি কোর্সের সিলেবাস ব্যাসিক টু এডভান্সড লেভেল পর্যন্ত সাজানো হয়েছে।
         </p>
 
-        <Tabs
+        <CategoryTabs
           tabOptions={tabOptions}
           selected={selectedCategory}
           setSelected={setSelectedCategory}

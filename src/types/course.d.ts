@@ -1,3 +1,5 @@
+import { CategoryName } from "@/data/categories";
+
 export type CourseDiscount = {
   type: "amount" | "percentage";
   value: number;
@@ -32,7 +34,7 @@ export type Course = {
   id: string; // slug-like unique id
   name: string;
   slug: string;
-  category: string; // must match a `name` in src/data/categories.ts
+  category: CategoryName; // must match a `name` in src/data/categories.ts
   briefDescription: string; // course-card text + meta description
   descriptionParagraphs: string[]; // 2–3 short paragraphs shown in hero
   thumbnail: string; // e.g. "/courses/german-language.jpg"
@@ -43,4 +45,5 @@ export type Course = {
   curriculum?: CurriculumModule[]; // flat list of modules (no week/day labels)
   instructors?: Instructor[]; // one or more course instructors
   about: string; // rich HTML string (future: Sanity)
+  isAffiliated?: boolean; // whether the course is affiliated with a partner organization
 };

@@ -3,6 +3,7 @@
 import { format } from "date-fns";
 import { useMemo, useState } from "react";
 import { MdCall } from "react-icons/md";
+import AffiliationBadge from "@/app/shared/affiliation/affiliation-badge";
 import NumSpan from "@/components/num-span";
 import PrimaryButton from "@/components/primary-button";
 import { cn, convertToBanglaNumber } from "@/lib/utils";

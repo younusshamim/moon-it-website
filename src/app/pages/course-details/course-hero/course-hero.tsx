@@ -3,6 +3,7 @@ import Container from "@/components/container";
 import LineShapes from "@/components/shapes/line-shapes";
 import type { Course } from "@/types/course";
 import CoursePricingCard from "../course-pricing-card/course-pricing-card";
+import AffiliationBadge from "@/app/shared/affiliation/affiliation-badge";
 
 const CourseHero = ({
   course,
@@ -53,6 +54,8 @@ const CourseHero = ({
             </ul>
           </div>
         )}
+
+        {course.isAffiliated && <AffiliationBadge />}
       </div>
 
       <div className="z-40 w-full lg:sticky lg:top-24 lg:w-1/2">

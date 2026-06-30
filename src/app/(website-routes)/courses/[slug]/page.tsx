@@ -4,7 +4,7 @@ import CourseAbout from "@/app/pages/course-details/course-about/course-about";
 import CourseCurriculum from "@/app/pages/course-details/course-curriculum/course-curriculum";
 import CourseHero from "@/app/pages/course-details/course-hero/course-hero";
 import CourseInstructors from "@/app/pages/course-details/course-instructors/course-instructors";
-import categories from "@/data/categories";
+import {categoryList} from "@/data/categories";
 import { courses, getCourseBySlug } from "@/data/course-list";
 
 type PropsTypes = {
@@ -42,7 +42,7 @@ const Course = async ({ params }: PropsTypes) => {
     return notFound();
   }
 
-  const categoryLabel = categories.find(
+  const categoryLabel = categoryList.find(
     (category) => category.name === course.category,
   )?.label;
 

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import CategoryAndCourseWrapper from "@/app/pages/courses/category-and-course-wrapper/category-and-course-wrapper";
+import TrustBar from "@/app/shared/affiliation/trust-bar";
+import Container from "@/components/container";
 import PageHeading from "@/components/page-heading";
 
 export const metadata: Metadata = {
@@ -12,6 +14,9 @@ const Courses = () => {
   return (
     <>
       <PageHeading label="কোর্স সমূহ" />
+      <Container>
+        <TrustBar className="-mt-2 mb-2" />
+      </Container>
       <CategoryAndCourseWrapper />
     </>
   );
