@@ -5,8 +5,8 @@ import servicesData from "../../../../data/services-data";
 
 const Services = () => {
   return (
-    <div>
-      <Container className="pt-20 pb-10">
+    <div className="section-padding-sm">
+      <Container>
         {/* <h2 className="text-4xl text-foreground-dark font-extrabold  text-center mb-[6px]">
           আমাদের <GradientText>বিশেষ সেবা</GradientText>
         </h2>

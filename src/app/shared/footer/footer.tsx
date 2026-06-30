@@ -8,8 +8,8 @@ import Container from "@/components/container";
 
 const Footer = () => {
   return (
-    <div className="bg-card ">
-      <Container className="pt-20 pb-10">
+    <div className="bg-card pt-20 pb-10">
+      <Container>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 lg:gap-0 place-items-center">
           {/* social and logo  */}
           <div className="flex flex-col items-center lg:items-start">

@@ -7,8 +7,8 @@ import { seminarImage } from "@/data/focused-images";
 
 const FreeSeminar = () => {
   return (
-    <div className="bg-primary dark:bg-background2">
-      <Container className="py-20 flex flex-col lg:flex-row gap-20 items-center">
+    <div className="bg-primary dark:bg-background2 section-padding-sm">
+      <Container className="flex flex-col lg:flex-row gap-20 items-center">
         <div className="w-full lg:w-1/2">
           <Image
             className="w-full h-[350px] object-cover object-center rounded-card shadow-lg  hover:scale-[1.02] transition-all duration-500"

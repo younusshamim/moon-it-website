@@ -8,10 +8,10 @@ import LineShapes from "../../../components/shapes/line-shapes";
 
 const AboutUs = () => {
   return (
-    <div className="relative">
+    <div className="relative section-padding-sm">
       <LineShapes lightClassName="left-[500px]" />
 
-      <Container className="pt-5 lg:pt-20 pb-10 flex flex-col-reverse lg:flex-row gap-20 items-center">
+      <Container className="flex flex-col-reverse lg:flex-row gap-20 items-center">
         <div className="w-full lg:w-1/2 z-40 flex flex-col gap-2">
           <p className="font-bold text-xl">প্রতিষ্ঠান সম্পর্কে কিছু কথা</p>
 

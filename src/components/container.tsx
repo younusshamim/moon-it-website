@@ -7,11 +7,7 @@ type PropsTypes = {
 };
 
 const Container = ({ children, className }: PropsTypes) => {
-  return (
-    <div className={cn("w-full xl:w-[1280px] mx-auto px-4 xl:px-0", className)}>
-      {children}
-    </div>
-  );
+  return <div className={cn("container-page", className)}>{children}</div>;
 };
 
 export default Container;
