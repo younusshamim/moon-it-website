@@ -1,13 +1,13 @@
 "use client";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { useMemo, useState } from "react";
 import Container from "@/components/container";
 import GradientText from "@/components/gradient-text";
-import CourseSection from "./course-section";
-import { useMemo, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp } from "lucide-react";
 import PrimaryButton from "@/components/primary-button";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { CurriculumSectionType } from "@/types/course";
+import type { CurriculumSectionType } from "@/types/course";
+import CourseSection from "./course-section";
 
 type PropsTypes = {
   curriculum: CurriculumSectionType[];
@@ -35,7 +35,7 @@ const CourseCurriculum = ({ curriculum }: PropsTypes) => {
         }
         return acc;
       },
-      []
+      [],
     );
 
     return limitedSections;
@@ -64,7 +64,7 @@ const CourseCurriculum = ({ curriculum }: PropsTypes) => {
               "absolute inset-x-0 bottom-0 flex justify-center pb-2",
               {
                 static: showAll,
-              }
+              },
             )}
           >
             <PrimaryButton

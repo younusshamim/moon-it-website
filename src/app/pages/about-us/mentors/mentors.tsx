@@ -1,13 +1,13 @@
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/animations/StaggerAnimation";
 import { Carousel } from "@/components/carousel";
 import Container from "@/components/container";
 import { CarouselItem } from "@/components/ui/carousel";
 import mentorList from "@/data/mentor-list";
 import MentorCard from "../../../shared/mentor-card/mentor-card";
 import Chairman from "../chairman/chairman";
-import {
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/animations/StaggerAnimation";
 
 const Mentors = () => {
   return (

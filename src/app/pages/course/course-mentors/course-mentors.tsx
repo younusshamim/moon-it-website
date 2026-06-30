@@ -4,7 +4,7 @@ import {
   StaggerItem,
 } from "@/components/animations/StaggerAnimation";
 import Container from "@/components/container";
-import { MentorType } from "@/types/mentor";
+import type { MentorType } from "@/types/mentor";
 
 const CourseMentors = ({ mentors }: { mentors: MentorType[] }) => {
   return (

@@ -1,6 +1,6 @@
+import { IoCheckmarkCircle } from "react-icons/io5";
 import Container from "@/components/container";
 import { seminarImage } from "@/data/focused-images";
-import { IoCheckmarkCircle } from "react-icons/io5";
 
 const PageHeader = () => {
   return (

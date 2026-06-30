@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Container from "@/components/container";
 import Tabs from "@/components/tabs";
 import imageCategories from "@/data/gallery-categories";
@@ -7,16 +8,15 @@ import galleryImages from "@/data/gallery-images";
 import { useIsMounted } from "@/hooks/use-is-mounted";
 import { useLgScreen } from "@/hooks/use-media-query";
 import getOptions from "@/lib/utils/get-options";
-import { useState } from "react";
 import EmblaCarousel from "./embla-carousel";
 import "./embla.css";
 
 const Gallery = () => {
   const [selected, setSelected] = useState<string | number>(
-    imageCategories[0].id
+    imageCategories[0].id,
   );
   const filteredImages = galleryImages.filter(
-    (item) => item.category === selected
+    (item) => item.category === selected,
   );
   const tabOptions = getOptions(imageCategories, "title", "id");
   const lgScreen = useLgScreen();

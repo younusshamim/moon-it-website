@@ -28,10 +28,10 @@ export const validateContactNo = z
       const regex = /(^(\+8801|8801|01|008801))[1|3-9]{1}(\d){8}$/;
       return regex.test(val);
     },
-    { message: "ইনভেলিড ফোন নাম্বার" }
+    { message: "ইনভেলিড ফোন নাম্বার" },
   );
 export const validateOptionalContactNo = validateContactNo.or(
-  z.literal("").optional()
+  z.literal("").optional(),
 );
 
 export const englishRegex = /^[A-Za-z\s]+$/;

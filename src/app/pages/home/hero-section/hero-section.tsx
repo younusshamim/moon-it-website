@@ -1,18 +1,18 @@
+import Image from "next/image";
+import Link from "next/link";
+import { BsStars } from "react-icons/bs";
+import { MdOutlineComputer } from "react-icons/md";
+import BounceScroll from "@/components/animations/BounceScroll";
+import FadeUpScroll from "@/components/animations/FadeUpScroll";
+import SpringyScroll from "@/components/animations/SpringyScroll";
+import WobbleScroll from "@/components/animations/WobbleScroll";
 import { Carousel } from "@/components/carousel";
 import Container from "@/components/container";
 import GradientText from "@/components/gradient-text";
 import PrimaryButton from "@/components/primary-button";
 import { CarouselItem } from "@/components/ui/carousel";
 import { heroImages } from "@/data/focused-images";
-import Image from "next/image";
-import Link from "next/link";
-import { BsStars } from "react-icons/bs";
-import { MdOutlineComputer } from "react-icons/md";
 import LineShapes from "./line-shapes";
-import SpringyScroll from "@/components/animations/SpringyScroll";
-import BounceScroll from "@/components/animations/BounceScroll";
-import WobbleScroll from "@/components/animations/WobbleScroll";
-import FadeUpScroll from "@/components/animations/FadeUpScroll";
 
 const HeroSection = () => {
   return (
@@ -27,15 +27,14 @@ const HeroSection = () => {
           </h3>
 
           <h2 className="text-foreground-dark font-extrabold text-[40px] lg:text-[52px] leading-snug">
-            নিজেকে গড়ে তুলুন <GradientText>ইন্ডাস্ট্রি এক্সপার্ট</GradientText>{" "}
-            {""}
+            নিজেকে গড়ে তুলুন <GradientText>ইন্ডাস্ট্রি এক্সপার্ট</GradientText> {""}
             ‍হিসেবে।
           </h2>
 
           <h1 className="lg:text-justify lg:text-lg">
-            মুন আইটি বৃহত্তর ফেনী/নোয়াখালীতে সর্বোচ্চ আসন ও ডিপার্টমেন্ট সমৃদ্ধ
-            ট্রেনিং ইনস্টিটিউট। অভিজ্ঞ মেন্টর আর আপডেটেড কারিকুলাম নিয়ে ‘মুন
-            আইটি’ প্রস্তুত আপনার ক্যারিয়ার গড়ার অগ্রযাত্রায়।
+            মুন আইটি বৃহত্তর ফেনী/নোয়াখালীতে সর্বোচ্চ আসন ও ডিপার্টমেন্ট সমৃদ্ধ ট্রেনিং
+            ইনস্টিটিউট। অভিজ্ঞ মেন্টর আর আপডেটেড কারিকুলাম নিয়ে ‘মুন আইটি’ প্রস্তুত আপনার
+            ক্যারিয়ার গড়ার অগ্রযাত্রায়।
           </h1>
 
           <div className="flex gap-2 lg:gap-4 z-40 w-full lg:w-fit px-5 lg:px-0">

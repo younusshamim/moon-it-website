@@ -1,11 +1,14 @@
 "use client";
 
-import Container from "@/components/container";
-import { getAdmissions } from "@/services/admission.action";
-import courseList from "@/data/course-list";
-import { AdmissionModel } from "@/models/admission.model";
-import { BaseResponseModel } from "@/models/base";
 import React, { useEffect, useState } from "react";
+import Container from "@/components/container";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -14,14 +17,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import courseList from "@/data/course-list";
 import { convertToBanglaNumber } from "@/lib/utils";
+import type { AdmissionModel } from "@/models/admission.model";
+import type { BaseResponseModel } from "@/models/base";
+import { getAdmissions } from "@/services/admission.action";
 
 const Admission = () => {
   const [admissions, setAdmissions] = useState<AdmissionModel[]>([]);
@@ -53,8 +53,8 @@ const Admission = () => {
     } else {
       setFilteredAdmissions(
         admissions.filter(
-          (admission) => admission.courseId.toString() === selectedCourse
-        )
+          (admission) => admission.courseId.toString() === selectedCourse,
+        ),
       );
     }
   }, [selectedCourse, admissions]);

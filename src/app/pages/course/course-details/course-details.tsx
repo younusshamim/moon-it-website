@@ -1,9 +1,9 @@
+import Image from "next/image";
+import SpringyScroll from "@/components/animations/SpringyScroll";
 import Container from "@/components/container";
 import LineShapes from "@/components/shapes/line-shapes";
-import { CourseType } from "@/types/course";
-import Image from "next/image";
+import type { CourseType } from "@/types/course";
 import FeeAndDiscount from "./fee-and-discount";
-import SpringyScroll from "@/components/animations/SpringyScroll";
 
 const CourseDetails = ({ course }: { course: CourseType }) => {
   const {

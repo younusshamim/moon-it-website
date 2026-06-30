@@ -1,9 +1,9 @@
-import { BaseModel } from "./base";
+import type { BaseModel } from "./base";
 
 export interface SeminarModel extends BaseModel {
-  name: String;
-  contactNo: String;
-  courseId: Number;
-  attendPosibility: String;
-  address?: String;
+  name: string;
+  contactNo: string;
+  courseId: number;
+  attendPosibility: string;
+  address?: string;
 }

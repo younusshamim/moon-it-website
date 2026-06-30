@@ -1,5 +1,5 @@
-import SpringyScroll from "@/components/animations/SpringyScroll";
 import Image from "next/image";
+import SpringyScroll from "@/components/animations/SpringyScroll";
 
 const SeminarImageWrap = () => {
   return (

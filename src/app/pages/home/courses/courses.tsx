@@ -1,5 +1,12 @@
 "use client";
 
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import { FaArrowRight } from "react-icons/fa6";
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/animations/StaggerAnimation";
 import { Carousel } from "@/components/carousel";
 import Container from "@/components/container";
 import GradientText from "@/components/gradient-text";
@@ -9,22 +16,15 @@ import { CarouselItem } from "@/components/ui/carousel";
 import categories from "@/data/categories";
 import courseList from "@/data/course-list";
 import getOptions from "@/lib/utils/get-options";
-import Link from "next/link";
-import { useMemo, useState } from "react";
-import { FaArrowRight } from "react-icons/fa6";
 import CourseCard from "./course-card";
-import {
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/animations/StaggerAnimation";
 
 const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | number>(
-    categories[0].name
+    categories[0].name,
   );
   const courses = useMemo(
     () => courseList.filter((course) => course.category === selectedCategory),
-    [selectedCategory]
+    [selectedCategory],
   );
   const tabOptions = getOptions(categories, "label", "name");
 
@@ -35,8 +35,7 @@ const Courses = () => {
           অসাধারন <GradientText>কোর্স সমূহ</GradientText>
         </h2>
         <p className="font-semibold mb-10 text-center">
-          প্রতিটি কোর্সের সিলেবাস ব্যাসিক টু এডভান্সড লেভেল পর্যন্ত সাজানো
-          হয়েছে।
+          প্রতিটি কোর্সের সিলেবাস ব্যাসিক টু এডভান্সড লেভেল পর্যন্ত সাজানো হয়েছে।
         </p>
 
         <Tabs

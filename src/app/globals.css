@@ -12,10 +12,10 @@
 */
 
 :root {
-  --background2:  0, 0%, 100%;  /* #fff */
-  --background:  0, 0%, 98%;  /* #FAFAFA */
+  --background2: 0, 0%, 100%; /* #fff */
+  --background: 0, 0%, 98%; /* #FAFAFA */
   --card: 228, 26%, 96%; /* #F3F4F8 */
-  
+
   /* --card-foreground: 215, 25%, 27%; */
   --foreground: 215, 25%, 27%; /* #334155 */
   --foreground-dark: 222, 47%, 11%; /* #0F172A */
@@ -41,7 +41,7 @@
   --destructive-foreground: 210 40% 98%;
 
   /* --border: 228 0% 90%; */
-  --border: 4 100 34%; 
+  --border: 4 100 34%;
   --input: 214.3 31.8% 91.4%;
   --ring: 222.2 84% 4.9%;
 
@@ -49,17 +49,74 @@
 }
 
 .dark {
-  --background: 221 50% 9%; /* #0B1221 */ 
+  --background: 221 50% 9%; /* #0B1221 */
   --background2: 219, 50%, 13%; /* #111c32 */
   --card: 222, 47%, 11%; /* #0F172A */
 
   /* --card-foreground: 215, 25%, 27%; */
   --foreground: 228, 26%, 96%; /* #F3F4F8 */
-  --foreground-dark:  0, 0%, 98%; /* #FAFAFA */
+  --foreground-dark: 0, 0%, 98%; /* #FAFAFA */
 
   --muted: 220 42% 16%;
 }
 
+/* Components — reusable layout patterns */
+.container-page {
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.section-padding-sm {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+  .container-page {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .section-padding-sm {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-page {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .section-padding-sm {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Embla Carousel Styles  */
 .embla {
   overflow: hidden;
 }
@@ -77,6 +134,6 @@
 }
 
 .backdrop-blur-2xl-new {
-  backdrop-filter: blur(40px); 
-  -webkit-backdrop-filter: blur(40px); 
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
 }

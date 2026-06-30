@@ -1,14 +1,14 @@
 "use server";
 
-import { BaseResponseModel } from "@/models/base";
+import { ZodError } from "zod";
+import type { BaseResponseModel } from "@/models/base";
 import { Seminar } from "@/schemas/mongoose/seminar.schema";
 import { seminarSchema } from "@/schemas/zod/seminar.schema";
-import { ZodError } from "zod";
 import { connectToDatabase } from "../config/db";
 
 export const onJoinSeminar = async (
   prevState: BaseResponseModel,
-  formData: FormData
+  formData: FormData,
 ): Promise<BaseResponseModel> => {
   try {
     const data = seminarSchema.parse(formData);

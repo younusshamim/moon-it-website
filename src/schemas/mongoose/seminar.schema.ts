@@ -26,7 +26,7 @@ const SeminarSchema = new mongoose.Schema(
       max: 100,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const Seminar =

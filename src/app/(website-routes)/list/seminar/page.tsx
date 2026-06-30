@@ -1,11 +1,14 @@
 "use client";
 
-import Container from "@/components/container";
-import { getSeminars } from "@/services/seminar.action";
-import courseList from "@/data/course-list";
-import { SeminarModel } from "@/models/seminar.model";
-import { BaseResponseModel } from "@/models/base";
 import React, { useEffect, useState } from "react";
+import Container from "@/components/container";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -15,13 +18,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import courseList from "@/data/course-list";
+import type { BaseResponseModel } from "@/models/base";
+import type { SeminarModel } from "@/models/seminar.model";
+import { getSeminars } from "@/services/seminar.action";
 
 const Seminar = () => {
   const [seminars, setSeminars] = useState<SeminarModel[]>([]);
@@ -50,8 +50,8 @@ const Seminar = () => {
     } else {
       setFilteredSeminars(
         seminars.filter(
-          (seminar) => seminar.courseId.toString() === selectedCourse
-        )
+          (seminar) => seminar.courseId.toString() === selectedCourse,
+        ),
       );
     }
   }, [selectedCourse, seminars]);

@@ -1,11 +1,11 @@
+import type { ReactNode } from "react";
 import Footer from "@/app/shared/footer/footer";
 import TopBar from "@/app/shared/topbar/topbar";
-import { ReactNode } from "react";
 import ConditionalNavbar from "../shared/navbar/conditional-navbar";
 
 type PropsTypes = {
   children: ReactNode;
-}
+};
 
 const Layout = ({ children }: PropsTypes) => {
   return (

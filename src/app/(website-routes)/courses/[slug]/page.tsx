@@ -1,13 +1,13 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import CourseCurriculum from "@/app/pages/course/course-curriculum/course-curriculum";
 import CourseDetails from "@/app/pages/course/course-details/course-details";
 import CourseMentors from "@/app/pages/course/course-mentors/course-mentors";
-import CourseCurriculum from "@/app/pages/course/course-curriculum/course-curriculum";
 import ServicesSection from "@/app/shared/services-section/services-section";
 import Container from "@/components/container";
 import GradientText from "@/components/gradient-text";
 import courseList from "@/data/course-list";
 import mentorList from "@/data/mentor-list";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
 
 type PropsTypes = {
   params: Promise<{ slug: string }>;
@@ -40,7 +40,7 @@ const Course = async ({ params }: PropsTypes) => {
   const { slug } = await params;
   const targetCourse = courseList.find((course) => course.slug === slug);
   const mentors = mentorList.filter((mentor) =>
-    targetCourse?.metorIds.includes(mentor.id)
+    targetCourse?.metorIds.includes(mentor.id),
   );
 
   if (!targetCourse) {

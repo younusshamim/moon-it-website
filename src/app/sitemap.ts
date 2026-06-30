@@ -1,5 +1,5 @@
+import type { MetadataRoute } from "next";
 import courseList from "@/data/course-list";
-import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;

@@ -1,4 +1,4 @@
-import { ServiceType } from "@/types/service";
+import type { ServiceType } from "@/types/service";
 
 const servicesData: ServiceType[] = [
   {
@@ -28,8 +28,7 @@ const servicesData: ServiceType[] = [
   },
   {
     title: "দুর্বলদের জন্য এক্সট্রা সাপোর্ট ক্লাস",
-    description:
-      "যারা কিছুটা দুর্বল, তাদের জন্য রয়েছে এক্সট্রা সাপোর্ট ক্লাসের ব্যবস্থা।",
+    description: "যারা কিছুটা দুর্বল, তাদের জন্য রয়েছে এক্সট্রা সাপোর্ট ক্লাসের ব্যবস্থা।",
     image: "/icons/unlimited-support.png",
   },
   {
@@ -46,8 +45,7 @@ const servicesData: ServiceType[] = [
   },
   {
     title: "আধুনিক কম্পিউটার ল্যাব",
-    description:
-      "শিক্ষার্থীদের জন্য রয়েছে সর্বাধুনিক প্রযুক্তি সমৃদ্ধ কম্পিউটার ল্যাব।",
+    description: "শিক্ষার্থীদের জন্য রয়েছে সর্বাধুনিক প্রযুক্তি সমৃদ্ধ কম্পিউটার ল্যাব।",
     image: "/icons/computer-laboratory.png",
   },
   {

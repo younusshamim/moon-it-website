@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type PropsTypes = {
   children: ReactNode;
-}
+};
 
 const GradientText = ({ children }: PropsTypes) => {
   return (

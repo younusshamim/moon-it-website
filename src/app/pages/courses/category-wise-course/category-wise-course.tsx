@@ -5,21 +5,23 @@ import CourseCard from "../../home/courses/course-card";
 
 type PropsType = {
   courseRef: React.MutableRefObject<Record<string, HTMLDivElement | null>>;
-}
+};
 
 const CategoryWiseCourses = ({ courseRef }: PropsType) => {
   return (
     <Container className="pt-10 pb-20 flex flex-col gap-16">
       {categories.map((category, index) => {
         const courses = courseList.filter(
-          (item) => item.category === category.name
+          (item) => item.category === category.name,
         );
 
         return (
           <div
             key={category.label + index}
             className="bg-card shadow-sm p-5 lg:p-10 rounded-card"
-            ref={(el) => { courseRef.current[category.name] = el; }}
+            ref={(el) => {
+              courseRef.current[category.name] = el;
+            }}
           >
             <h3 className="text-4xl text-primary-lighter font-extrabold mb-5 pt-3 lg:pt-0">
               {category.label}

@@ -1,22 +1,22 @@
 "use client";
+import Image from "next/image";
+import { IoIosCall } from "react-icons/io";
+import { IoLocationSharp } from "react-icons/io5";
+import { MdAccessTime, MdEmail } from "react-icons/md";
 import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/animations/StaggerAnimation";
 import Container from "@/components/container";
 import LineShapes from "@/components/shapes/line-shapes";
-import Image from "next/image";
-import { IoIosCall } from "react-icons/io";
-import { IoLocationSharp } from "react-icons/io5";
-import { MdAccessTime, MdEmail } from "react-icons/md";
 
 const Address = () => {
   return (
     <Container className="pt-10 pb-20">
       <h2 className="font-semibold justify-center text-center xl:text-left mb-5 xl:mb-0">
-        যে কোনো প্রয়োজনে যোগাযোগ করতে সরাসরি আমাদের অফিস ভিজিট করতে পারেন।
-        তাছাড়া হটলাইন নম্বরে কল করে জেনে নিতে পারেন ট্রেইনিং সংক্রান্ত যেকোনো
-        তথ্য। এছাড়াও উল্লেখিত মেইলে কিংবা ফেসবুক ম্যাসেঞ্জারেও নক দিতে পারেন।
+        যে কোনো প্রয়োজনে যোগাযোগ করতে সরাসরি আমাদের অফিস ভিজিট করতে পারেন। তাছাড়া হটলাইন
+        নম্বরে কল করে জেনে নিতে পারেন ট্রেইনিং সংক্রান্ত যেকোনো তথ্য। এছাড়াও উল্লেখিত
+        মেইলে কিংবা ফেসবুক ম্যাসেঞ্জারেও নক দিতে পারেন।
       </h2>
 
       <div className="flex flex-col-reverse xl:flex-row items-center gap-10 relative">
@@ -29,7 +29,7 @@ const Address = () => {
               <div className="flex gap-3 items-center mb-3">
                 <IoLocationSharp className="text-2xl" />
                 <h2 className="w-full">
-                শরিফা প্লাজা ৩য় তলা (জনতা ব্যাংকের উপরে), রেল গেইট, ফেনী সদর, ফেনী।
+                  শরিফা প্লাজা ৩য় তলা (জনতা ব্যাংকের উপরে), রেল গেইট, ফেনী সদর, ফেনী।
                 </h2>
               </div>
             </StaggerItem>

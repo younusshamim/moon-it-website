@@ -1,8 +1,8 @@
+import { GraduationCap } from "lucide-react";
 import React from "react";
 import { Accordion } from "@/components/ui/accordion";
+import type { CurriculumSectionType } from "@/types/course";
 import CourseModule from "./course-module";
-import { GraduationCap } from "lucide-react";
-import { CurriculumSectionType } from "@/types/course";
 
 interface CourseSectionProps {
   section: CurriculumSectionType;
@@ -32,7 +32,7 @@ const CourseSection: React.FC<CourseSectionProps> = React.memo(
         </Accordion>
       </section>
     );
-  }
+  },
 );
 
 CourseSection.displayName = "CourseSection";

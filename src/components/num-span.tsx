@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type PropsType = {
-  children: ReactNode,
+  children: ReactNode;
 };
 
 const NumSpan = ({ children }: PropsType) => {

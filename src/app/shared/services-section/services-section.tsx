@@ -1,4 +1,4 @@
-import { ServiceType } from "@/types/service";
+import type { ServiceType } from "@/types/service";
 import ServiceCard from "./service-card";
 
 const ServicesSection = ({ servicesData }: { servicesData: ServiceType[] }) => {

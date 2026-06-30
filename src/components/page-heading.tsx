@@ -3,7 +3,7 @@ import Container from "./container";
 
 type PropsTypes = {
   label: string;
-}
+};
 
 const PageHeading = ({ label }: PropsTypes) => {
   return (

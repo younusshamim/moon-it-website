@@ -1,10 +1,10 @@
-import Container from "@/components/container";
 import Image from "next/image";
 import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa6";
 import { IoIosCall, IoLogoYoutube } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
+import Container from "@/components/container";
 
 const Footer = () => {
   return (
@@ -51,9 +51,7 @@ const Footer = () => {
 
             <div className="flex gap-3 items-center mb-3">
               <IoLocationSharp className="text-2xl" />
-              <p>
-               শরিফা প্লাজা ৩য় তলা (জনতা ব্যাংকের উপরে), রেল গেইট, ফেনী সদর, ফেনী।
-              </p>
+              <p>শরিফা প্লাজা ৩য় তলা (জনতা ব্যাংকের উপরে), রেল গেইট, ফেনী সদর, ফেনী।</p>
             </div>
 
             <div className="flex gap-3 items-center">
@@ -101,8 +99,8 @@ const Footer = () => {
         <hr className="border border-muted my-10" />
 
         <p className="text-center">
-          কপিরাইট ©{new Date().getFullYear()} মুন আইটি ট্রেইনিং ইনস্টিটিউট।
-          সর্বস্বত্ব সংরক্ষিত।
+          কপিরাইট ©{new Date().getFullYear()} মুন আইটি ট্রেইনিং ইনস্টিটিউট। সর্বস্বত্ব
+          সংরক্ষিত।
         </p>
       </Container>
     </div>

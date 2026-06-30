@@ -1,13 +1,13 @@
 "use client";
 
+import { format } from "date-fns";
+import { useState } from "react";
+import { MdCall } from "react-icons/md";
 import FormSubmittedModal from "@/components/modals/form-submitted-modal";
 import NumSpan from "@/components/num-span";
 import PrimaryButton from "@/components/primary-button";
 import { convertToBanglaNumber } from "@/lib/utils";
-import { CourseType } from "@/types/course";
-import { format } from "date-fns";
-import { useState } from "react";
-import { MdCall } from "react-icons/md";
+import type { CourseType } from "@/types/course";
 import AdmissionFormModal from "../admission-form-modal/admission-form-modal";
 
 type PropsType = {
@@ -88,12 +88,12 @@ const FeeAndDiscount = ({ course }: PropsType) => {
           [আগামী{" "}
           <NumSpan>
             {convertToBanglaNumber(
-              format(new Date(discountEndDate), "dd/MM/yyyy")
+              format(new Date(discountEndDate), "dd/MM/yyyy"),
             )}
           </NumSpan>{" "}
-          ইং তারিখ পর্যন্ত <NumSpan>{discountAmountText}</NumSpan> ডিস্কাউন্টে
-          কোর্স ফি মাত্র ৳{" "}
-          <NumSpan>{convertToBanglaNumber(feeAfterDiscount)}</NumSpan>/- টাকা]
+          ইং তারিখ পর্যন্ত <NumSpan>{discountAmountText}</NumSpan> ডিস্কাউন্টে কোর্স ফি
+          মাত্র ৳ <NumSpan>{convertToBanglaNumber(feeAfterDiscount)}</NumSpan>/-
+          টাকা]
         </p>
       )}
     </div>
@@ -105,7 +105,7 @@ export default FeeAndDiscount;
 const calculateFeeAfterDiscount = (
   fee: number,
   type: string,
-  value: number
+  value: number,
 ) => {
   if (fee === 0) return 0;
   return type === "amount" ? fee - value : fee - (fee * value) / 100;

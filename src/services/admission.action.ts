@@ -1,15 +1,15 @@
 "use server";
 
-import { BaseResponseModel } from "@/models/base";
-import { admissionSchema } from "@/schemas/zod/admission.schema";
 import { ZodError } from "zod";
+import type { BaseResponseModel } from "@/models/base";
+import { admissionSchema } from "@/schemas/zod/admission.schema";
 import { connectToDatabase } from "../config/db";
 import { convertToEnglishNumber } from "../lib/utils";
 import { Admission } from "../schemas/mongoose/admission.schema";
 
 export const onAdmission = async (
   prevState: BaseResponseModel,
-  formData: FormData
+  formData: FormData,
 ): Promise<BaseResponseModel> => {
   try {
     const data = admissionSchema.parse(formData);
@@ -49,7 +49,7 @@ export const onAdmission = async (
 
 export const deleteAllAdmissions = async (
   prevState: BaseResponseModel,
-  formData: FormData
+  formData: FormData,
 ): Promise<BaseResponseModel> => {
   try {
     await connectToDatabase();

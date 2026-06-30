@@ -1,7 +1,7 @@
 "use client";
 
+import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 
 type PropsTypes = {
   children: ReactNode;
@@ -34,7 +34,7 @@ const PrimaryButton = ({
           "h-[50px] px-6 lg:px-8 text-base xl:text-lg": size == "lg",
           "border border-primary-lighter bg-gradient-to-r from-primary to-primary-lighter text-transparent bg-clip-text":
             variant === "outline",
-        }
+        },
       )}
       {...rest}
     >

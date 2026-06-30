@@ -1,7 +1,7 @@
 "use client";
 
-import { HTMLMotionProps, motion } from "framer-motion";
-import { ReactNode } from "react";
+import { type HTMLMotionProps, motion } from "framer-motion";
+import type { ReactNode } from "react";
 
 interface ScrollAnimationProps extends Omit<HTMLMotionProps<"div">, "animate"> {
   children: ReactNode;

@@ -1,11 +1,11 @@
+import { BookOpen, CheckCircle } from "lucide-react";
 import React from "react";
 import {
+  AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  AccordionContent,
 } from "@/components/ui/accordion";
-import { BookOpen, CheckCircle } from "lucide-react";
-import { CurriculumModuleType } from "@/types/course";
+import type { CurriculumModuleType } from "@/types/course";
 
 interface CourseModuleProps {
   module: CurriculumModuleType;
@@ -63,7 +63,7 @@ const CourseModule: React.FC<CourseModuleProps> = React.memo(
         </AccordionContent>
       </AccordionItem>
     );
-  }
+  },
 );
 
 CourseModule.displayName = "CourseModule";

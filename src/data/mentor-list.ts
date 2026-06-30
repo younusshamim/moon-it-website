@@ -1,11 +1,10 @@
-import { MentorType } from "@/types/mentor";
+import type { MentorType } from "@/types/mentor";
 
 const mentorList: MentorType[] = [
   {
     id: 1,
     name: "ইঞ্জি. ইউছুপ শাহীন",
-    title:
-      "ইন্সট্রাক্টর - নেটওয়ার্কিং সিসিএনএ, গ্রাফিক ডিজাইন এন্ড আইটি সাপোর্ট সার্ভিসেস",
+    title: "ইন্সট্রাক্টর - নেটওয়ার্কিং সিসিএনএ, গ্রাফিক ডিজাইন এন্ড আইটি সাপোর্ট সার্ভিসেস",
     picture: "/instructors/Yousuf-Shahin-Final.png",
   },
   {
@@ -85,7 +84,7 @@ const mentorList: MentorType[] = [
     name: "সিরাজ উদ্দিন",
     title: "ইন্সট্রাক্টর - ইতালিয়ান ল্যাঙ্গুয়েজ",
     picture: "/instructors/sirajuddin.png",
-  }
+  },
 ];
 
 export default mentorList;

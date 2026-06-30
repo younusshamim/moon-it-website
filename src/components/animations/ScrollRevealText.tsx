@@ -1,4 +1,4 @@
-import { useInView, motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import React from "react";
 
 interface ScrollRevealTextProps {

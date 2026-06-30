@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose, { type Mongoose } from "mongoose";
 
 interface Connection {
   isConnected?: number;

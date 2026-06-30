@@ -1,5 +1,10 @@
-"use client"
+"use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import { startTransition, useActionState, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import ControlledSelect from "@/components/controlled-select";
 import Modal from "@/components/modal";
 import PrimaryButton from "@/components/primary-button";
@@ -7,14 +12,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import courseList from "@/data/course-list";
 import { convertToBanglaNumber } from "@/lib/utils";
-import { BaseResponseModel } from "@/models/base";
+import type { BaseResponseModel } from "@/models/base";
 import { admissionSchema } from "@/schemas/zod/admission.schema";
 import { onAdmission } from "@/services/admission.action";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Image from "next/image";
-import { startTransition, useActionState, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import toast from 'react-hot-toast';
 
 type PropsTypes = {
   isOpen: boolean;
@@ -24,15 +24,28 @@ type PropsTypes = {
   feeAfterDiscount: number;
   courseId: number;
   isDiscount: boolean;
-}
+};
 
-const AdmissionFormModal = ({ isOpen, setIsOpen, setSubmittedModal, feeAfterDiscount, courseId, isDiscount }: PropsTypes) => {
-  const [state, formAction] = useActionState<BaseResponseModel<null>, FormData>(onAdmission, null);
-  const [submitting, setSubmitting] = useState(false)
+const AdmissionFormModal = ({
+  isOpen,
+  setIsOpen,
+  setSubmittedModal,
+  feeAfterDiscount,
+  courseId,
+  isDiscount,
+}: PropsTypes) => {
+  const [state, formAction] = useActionState<BaseResponseModel<null>, FormData>(
+    onAdmission,
+    null,
+  );
+  const [submitting, setSubmitting] = useState(false);
 
   const methods = useForm<any>({
     resolver: zodResolver(admissionSchema),
-    defaultValues: { courseId, courseFee: convertToBanglaNumber(feeAfterDiscount) }
+    defaultValues: {
+      courseId,
+      courseFee: convertToBanglaNumber(feeAfterDiscount),
+    },
   });
 
   const {
@@ -43,31 +56,33 @@ const AdmissionFormModal = ({ isOpen, setIsOpen, setSubmittedModal, feeAfterDisc
     reset,
   } = methods;
 
-  const courseOptions = courseList.map(course => {
-    return { label: course.name, value: course.id.toString() }
-  })
+  const courseOptions = courseList.map((course) => {
+    return { label: course.name, value: course.id.toString() };
+  });
 
   const onSubmit = handleSubmit((data) => {
     startTransition(() => {
       formAction(data);
     });
-    setSubmitting(true)
-  })
+    setSubmitting(true);
+  });
 
   useEffect(() => {
-    if (!state) { return }
-    if (state.status === 'success') {
+    if (!state) {
+      return;
+    }
+    if (state.status === "success") {
       reset();
       setIsOpen(false);
-      setSubmitting(false)
+      setSubmitting(false);
       setSubmittedModal(true);
-    } else if (state.status === 'error') {
-      setSubmitting(false)
+    } else if (state.status === "error") {
+      setSubmitting(false);
       toast.error(state.message);
     }
   }, [reset, setIsOpen, setSubmittedModal, state]);
 
-  const isActiveCourseFeeField = feeAfterDiscount > 0
+  const isActiveCourseFeeField = feeAfterDiscount > 0;
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -87,7 +102,8 @@ const AdmissionFormModal = ({ isOpen, setIsOpen, setSubmittedModal, feeAfterDisc
           </h1>
           <h3 className="font-medium w-4/5 lg:w-full">
             {/* ফর্মটি পূরণ করার পর আমাদের প্রতিনিধি শীঘ্রই আপনার সাথে যোগাযোগ করবেন। */}
-            ফর্মটি পূরণের পর আমাদের প্রতিনিধি শীঘ্রই আপনার সঙ্গে ডিস্কাউন্টে ভর্তি বিষয়ে যোগাযোগ করবে।
+            ফর্মটি পূরণের পর আমাদের প্রতিনিধি শীঘ্রই আপনার সঙ্গে ডিস্কাউন্টে ভর্তি বিষয়ে
+            যোগাযোগ করবে।
           </h3>
         </div>
 
@@ -136,7 +152,7 @@ const AdmissionFormModal = ({ isOpen, setIsOpen, setSubmittedModal, feeAfterDisc
             className="col-span-2 mt-5"
             disabled={submitting}
           >
-            {submitting ? 'অপেক্ষা করুন..' : 'সাবমিট করুন'}
+            {submitting ? "অপেক্ষা করুন.." : "সাবমিট করুন"}
           </PrimaryButton>
         </form>
       </div>

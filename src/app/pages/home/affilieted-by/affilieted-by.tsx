@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import FadeUpScroll from "@/components/animations/FadeUpScroll";
 import SpringyScroll from "@/components/animations/SpringyScroll";
 import {
@@ -8,7 +9,7 @@ import {
 import Container from "@/components/container";
 import GradientText from "@/components/gradient-text";
 import affiliatedList from "@/data/affiliated-list";
-import Image from "next/image";
+
 const AffilietedBy = () => {
   return (
     <div className="pt-10 pb-14">

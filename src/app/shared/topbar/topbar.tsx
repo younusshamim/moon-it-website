@@ -1,6 +1,6 @@
-import Container from "@/components/container";
 import { IoIosCall } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
+import Container from "@/components/container";
 
 const TopBar = () => {
   return (

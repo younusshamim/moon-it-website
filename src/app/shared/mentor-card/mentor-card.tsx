@@ -1,5 +1,5 @@
-import { MentorType } from "@/types/mentor";
 import Image from "next/image";
+import type { MentorType } from "@/types/mentor";
 
 const MentorCard = ({ mentor }: { mentor: MentorType }) => {
   return (

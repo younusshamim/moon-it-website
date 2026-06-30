@@ -1,8 +1,8 @@
+import type { Metadata } from "next";
 import Mentors from "@/app/pages/about-us/mentors/mentors";
 import AboutUsComp from "@/app/shared/about-us/about-us";
 import Logos from "@/app/shared/logos/logos";
 import PageHeading from "@/components/page-heading";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "আমাদের সম্পর্কে",

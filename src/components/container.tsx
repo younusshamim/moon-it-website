@@ -1,10 +1,10 @@
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
 
 type PropsTypes = {
   children: ReactNode;
   className?: string;
-}
+};
 
 const Container = ({ children, className }: PropsTypes) => {
   return (
