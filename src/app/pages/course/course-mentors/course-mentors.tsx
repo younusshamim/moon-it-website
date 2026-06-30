@@ -4,9 +4,9 @@ import {
   StaggerItem,
 } from "@/components/animations/StaggerAnimation";
 import Container from "@/components/container";
-import type { MentorType } from "@/types/mentor";
+import type { Instructor } from "@/types/course";
 
-const CourseMentors = ({ mentors }: { mentors: MentorType[] }) => {
+const CourseMentors = ({ mentors }: { mentors: Instructor[] }) => {
   return (
     <div className="bg-primary dark:bg-background2">
       <Container className="py-10 mt-10">

@@ -5,7 +5,7 @@ import {
 import { Carousel } from "@/components/carousel";
 import Container from "@/components/container";
 import { CarouselItem } from "@/components/ui/carousel";
-import mentorList from "@/data/mentor-list";
+import mentorList from "@/data/instructor-list";
 import MentorCard from "../../../shared/mentor-card/mentor-card";
 import Chairman from "../chairman/chairman";
 

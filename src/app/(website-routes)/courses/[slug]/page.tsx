@@ -1,36 +1,34 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import CourseCurriculum from "@/app/pages/course/course-curriculum/course-curriculum";
-import CourseDetails from "@/app/pages/course/course-details/course-details";
-import CourseMentors from "@/app/pages/course/course-mentors/course-mentors";
-import ServicesSection from "@/app/shared/services-section/services-section";
-import Container from "@/components/container";
-import GradientText from "@/components/gradient-text";
-import courseList from "@/data/course-list";
-import mentorList from "@/data/mentor-list";
+import CourseAbout from "@/app/pages/course-details/course-about/course-about";
+import CourseCurriculum from "@/app/pages/course-details/course-curriculum/course-curriculum";
+import CourseHero from "@/app/pages/course-details/course-hero/course-hero";
+import CourseInstructors from "@/app/pages/course-details/course-instructors/course-instructors";
+import categories from "@/data/categories";
+import { courses, getCourseBySlug } from "@/data/course-list";
 
 type PropsTypes = {
   params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
-  return courseList.map((course) => ({ slug: course.slug }));
+  return courses.map((course) => ({ slug: course.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PropsTypes): Promise<Metadata> {
   const { slug } = await params;
-  const targetCourse = courseList.find((course) => course.slug === slug);
+  const course = getCourseBySlug(slug);
   return {
-    title: targetCourse?.name,
-    description: `${targetCourse?.description1} ${targetCourse?.description2}`,
+    title: course?.name,
+    description: course?.briefDescription,
     openGraph: {
       images: {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}${targetCourse?.image}`,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}${course?.thumbnail}`,
         width: 1200,
         height: 630,
-        alt: targetCourse?.name,
+        alt: course?.name,
       },
     },
   };
@@ -38,31 +36,24 @@ export async function generateMetadata({
 
 const Course = async ({ params }: PropsTypes) => {
   const { slug } = await params;
-  const targetCourse = courseList.find((course) => course.slug === slug);
-  const mentors = mentorList.filter((mentor) =>
-    targetCourse?.metorIds.includes(mentor.id),
-  );
+  const course = getCourseBySlug(slug);
 
-  if (!targetCourse) {
+  if (!course) {
     return notFound();
   }
 
+  const categoryLabel = categories.find(
+    (category) => category.name === course.category,
+  )?.label;
+
   return (
     <>
-      <CourseDetails course={targetCourse} />
-
-      <Container className="py-10">
-        <h2 className="text-4xl text-foreground-dark font-extrabold text-center mb-4">
-          কোর্সে <GradientText>আপনি পাচ্ছেন</GradientText>
-        </h2>
-        <ServicesSection servicesData={targetCourse?.services} />
-      </Container>
-
-      {targetCourse.curriculum && (
-        <CourseCurriculum curriculum={targetCourse.curriculum} />
+      <CourseHero course={course} categoryLabel={categoryLabel} />
+      <CourseAbout course={course} />
+      {course.curriculum && <CourseCurriculum curriculum={course.curriculum} />}
+      {course.instructors && (
+        <CourseInstructors instructors={course.instructors} />
       )}
-
-      {mentors.length > 0 && <CourseMentors mentors={mentors} />}
     </>
   );
 };

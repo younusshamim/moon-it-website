@@ -11,7 +11,7 @@ import PrimaryButton from "@/components/primary-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import attendPosibility from "@/data/attend-posibility";
-import courseList from "@/data/course-list";
+import { courses } from "@/data/course-list";
 import type { BaseResponseModel } from "@/models/base";
 import { seminarSchema } from "@/schemas/zod/seminar.schema";
 import { onJoinSeminar } from "@/services/seminar.action";
@@ -69,7 +69,7 @@ const SeminarForm = () => {
   }, [selectedCourseId]);
 
   // data
-  const courseOptions = courseList.map((course) => {
+  const courseOptions = courses.map((course) => {
     return { label: course.name, value: course.id.toString() };
   });
   const attendPosibilityOptions = attendPosibility.map((item) => {

@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
+import NumSpan from "@/components/num-span";
 import PrimaryButton from "@/components/primary-button";
-import { cn } from "@/lib/utils";
+import { cn, convertToBanglaNumber } from "@/lib/utils";
+import { getEffectivePrice } from "@/lib/utils/pricing";
 import type { Course } from "@/types/course";
 
 type PropsTypes = {
@@ -10,7 +12,23 @@ type PropsTypes = {
   className?: string;
 };
 
-const CourseCard = ({ course, className }: PropsTypes) => {
+const getStartingPrice = (course: Course): number | null => {
+  if (course.variations?.length) {
+    return Math.min(
+      ...course.variations.map(
+        (v) => getEffectivePrice(v.pricing).feeAfterDiscount,
+      ),
+    );
+  }
+  if (course.pricing) {
+    return getEffectivePrice(course.pricing).feeAfterDiscount;
+  }
+  return null;
+};
+
+const CourseCardNew = ({ course, className }: PropsTypes) => {
+  const startingPrice = getStartingPrice(course);
+
   return (
     <div
       className={cn(
@@ -32,10 +50,18 @@ const CourseCard = ({ course, className }: PropsTypes) => {
           {course.name}
         </h3>
         <p className="text-justify mb-2">
-          {course.name.length > 70
-            ? course.name.slice(0, 70) + "..."
-            : course.name}
+          {course.briefDescription.length > 90
+            ? `${course.briefDescription.slice(0, 90)}...`
+            : course.briefDescription}
         </p>
+
+        {startingPrice !== null && (
+          <p className="font-bold text-primary mb-1">
+            {course.variations?.length ? "শুরু " : ""}৳
+            <NumSpan>{convertToBanglaNumber(startingPrice)}</NumSpan> টাকা
+            {course.variations?.length ? " থেকে" : ""}
+          </p>
+        )}
 
         <Link href={`/courses/${course.slug}`}>
           <PrimaryButton
@@ -44,11 +70,11 @@ const CourseCard = ({ course, className }: PropsTypes) => {
             className="shadow-none w-full"
           >
             বিস্তারিত দেখি
-          </PrimaryButton>{" "}
+          </PrimaryButton>
         </Link>
       </div>
     </div>
   );
 };
 
-export default CourseCard;
+export default CourseCardNew;

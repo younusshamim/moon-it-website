@@ -10,8 +10,9 @@ import Modal from "@/components/modal";
 import PrimaryButton from "@/components/primary-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import courseList from "@/data/course-list";
+import { courses } from "@/data/course-list";
 import { convertToBanglaNumber } from "@/lib/utils";
+import { getEffectivePrice } from "@/lib/utils/pricing";
 import type { BaseResponseModel } from "@/models/base";
 import { admissionSchema } from "@/schemas/zod/admission.schema";
 import { onAdmission } from "@/services/admission.action";
@@ -21,18 +22,32 @@ type PropsTypes = {
   setIsOpen: (isOpen: boolean) => void;
   setSubmittedModal: (isOpen: boolean) => void;
   className?: string;
-  feeAfterDiscount: number;
-  courseId: number;
-  isDiscount: boolean;
+  /** Legacy admission course id of the course the user enrolled from. */
+  initialCourseId: number;
+  /** Pre-selected variation id, when the course has variations. */
+  initialVariationId?: string;
+};
+
+const findCourse = (courseId?: number) =>
+  courses.find((course) => course.admissionCourseId === courseId);
+
+/** Resolves the effective fee (after discount) for a course + variation. */
+const resolveFee = (courseId?: number, variationId?: string) => {
+  const course = findCourse(courseId);
+  if (!course) return undefined;
+  const pricing = course.variations?.length
+    ? course.variations.find((v) => v.id === variationId)?.pricing
+    : course.pricing;
+  if (!pricing) return undefined;
+  return getEffectivePrice(pricing).feeAfterDiscount;
 };
 
 const AdmissionFormModal = ({
   isOpen,
   setIsOpen,
   setSubmittedModal,
-  feeAfterDiscount,
-  courseId,
-  isDiscount,
+  initialCourseId,
+  initialVariationId,
 }: PropsTypes) => {
   const [state, formAction] = useActionState<BaseResponseModel<null>, FormData>(
     onAdmission,
@@ -40,25 +55,70 @@ const AdmissionFormModal = ({
   );
   const [submitting, setSubmitting] = useState(false);
 
+  const initialFee = resolveFee(initialCourseId, initialVariationId);
+
   const methods = useForm<any>({
     resolver: zodResolver(admissionSchema),
     defaultValues: {
-      courseId,
-      courseFee: convertToBanglaNumber(feeAfterDiscount),
+      courseId: initialCourseId,
+      variationId: initialVariationId,
+      courseFee:
+        initialFee !== undefined ? convertToBanglaNumber(initialFee) : "",
     },
   });
 
   const {
     register,
     control,
+    watch,
+    setValue,
     handleSubmit,
     formState: { errors },
     reset,
   } = methods;
 
-  const courseOptions = courseList.map((course) => {
-    return { label: course.name, value: course.id.toString() };
-  });
+  // The modal stays mounted while the user changes packages outside it, so
+  // `defaultValues` (captured once) goes stale. Re-seed the form from the
+  // latest pre-selection every time the modal opens.
+  useEffect(() => {
+    if (!isOpen) return;
+    const fee = resolveFee(initialCourseId, initialVariationId);
+    reset({
+      courseId: initialCourseId,
+      variationId: initialVariationId,
+      courseFee: fee !== undefined ? convertToBanglaNumber(fee) : "",
+    });
+  }, [isOpen, initialCourseId, initialVariationId, reset]);
+
+  const selectedCourseId = watch("courseId");
+  const selectedVariationId = watch("variationId");
+
+  const selectedCourse = findCourse(selectedCourseId);
+  const variations = selectedCourse?.variations ?? [];
+
+  const courseOptions = courses.map((course) => ({
+    label: course.name,
+    value: course.admissionCourseId.toString(),
+  }));
+
+  const variationOptions = variations.map((variation) => ({
+    label: variation.name,
+    value: variation.id,
+  }));
+
+  // Keep the variation selection valid for the current course, then sync the
+  // (read-only) fee field to the resolved course + variation pricing.
+  useEffect(() => {
+    if (!variations.length) {
+      if (selectedVariationId) setValue("variationId", undefined);
+    } else if (!variations.some((v) => v.id === selectedVariationId)) {
+      setValue("variationId", variations[0].id);
+      return; // wait for the corrected variation to re-run this effect
+    }
+
+    const fee = resolveFee(selectedCourseId, selectedVariationId);
+    setValue("courseFee", fee !== undefined ? convertToBanglaNumber(fee) : "");
+  }, [selectedCourseId, selectedVariationId, variations, setValue]);
 
   const onSubmit = handleSubmit((data) => {
     startTransition(() => {
@@ -82,8 +142,6 @@ const AdmissionFormModal = ({
     }
   }, [reset, setIsOpen, setSubmittedModal, state]);
 
-  const isActiveCourseFeeField = feeAfterDiscount > 0;
-
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <div className="flex flex-col gap-12 px-0 lg:px-10 py-5">
@@ -97,13 +155,11 @@ const AdmissionFormModal = ({
             sizes="100vw"
           />
           <h1 className="text-3xl font-extrabold text-primary mb-3 lg:mb-1">
-            {/* নিচের ফর্মটি সঠিক তথ্য দিয়ে পূরণ করুন */}
-            ডিস্কাউন্টে ভর্তি হতে নিচের ফর্মটি পূরণ করুন
+            ভর্তি হতে নিচের ফর্মটি পূরণ করুন
           </h1>
           <h3 className="font-medium w-4/5 lg:w-full">
-            {/* ফর্মটি পূরণ করার পর আমাদের প্রতিনিধি শীঘ্রই আপনার সাথে যোগাযোগ করবেন। */}
-            ফর্মটি পূরণের পর আমাদের প্রতিনিধি শীঘ্রই আপনার সঙ্গে ডিস্কাউন্টে ভর্তি বিষয়ে
-            যোগাযোগ করবে।
+            ফর্মটি পূরণের পর আমাদের প্রতিনিধি শীঘ্রই আপনার সঙ্গে ভর্তি বিষয়ে যোগাযোগ
+            করবে।
           </h3>
         </div>
 
@@ -115,30 +171,39 @@ const AdmissionFormModal = ({
             error={errors.name?.message as string}
           />
           <Input
-            label="ফোন নাম্বার (Only English)"
-            placeholder="ইংরেজিতে ফোন নাম্বার লিখুন"
+            label="ফোন নাম্বার (Only English)"
+            placeholder="ইংরেজিতে ফোন নাম্বার লিখুন"
             {...register("contactNo")}
             error={errors.contactNo?.message as string}
           />
           <ControlledSelect
             label="যে কোর্সটি করতে চাচ্ছেন"
-            placeholder="যে কোর্সটি করতে চাচ্ছেন"
+            placeholder="কোর্স বাছাই করুন"
             name="courseId"
             options={courseOptions}
             control={control}
             error={errors.courseId?.message as string}
-            inputClassName="disabled:opacity-100"
-            className={isActiveCourseFeeField ? "col-span-2" : "col-span-2"}
-            disabled
+            className={variationOptions.length ? "col-span-1" : "col-span-2"}
           />
-          {/* <Input
-            label={isDiscount ? "ডিস্কাউন্টে কোর্স ফি" : "কোর্স ফি"}
+          {variationOptions.length > 0 && (
+            <ControlledSelect
+              label="লেভেল / প্যাকেজ"
+              placeholder="লেভেল বাছাই করুন"
+              name="variationId"
+              options={variationOptions}
+              control={control}
+              error={errors.variationId?.message as string}
+              className="col-span-1"
+            />
+          )}
+          <Input
+            label="কোর্স ফি"
             inputClassName="disabled:opacity-100 font-sans"
-            className={isActiveCourseFeeField ? "block" : "hidden"}
+            className="col-span-2"
             disabled
             {...register("courseFee")}
             error={errors.courseFee?.message as string}
-          /> */}
+          />
           <Textarea
             label="আপনার ঠিকানা"
             placeholder="আপনার ঠিকানা লিখুন"

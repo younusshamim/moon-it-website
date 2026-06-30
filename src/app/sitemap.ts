@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import courseList from "@/data/course-list";
+import { courses } from "@/data/course-list";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-  const courseEntries: MetadataRoute.Sitemap = courseList.map((course) => ({
+  const courseEntries: MetadataRoute.Sitemap = courses.map((course) => ({
     url: `${baseUrl}/courses/${course.slug}`,
     // lastModified: new Date(course.updatedAt),
   }));

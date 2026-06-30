@@ -3,10 +3,10 @@ import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa6";
 import PrimaryButton from "@/components/primary-button";
 import { cn } from "@/lib/utils";
-import type { CourseType } from "@/types/course";
+import type { Course } from "@/types/course";
 
 type PropsTypes = {
-  course: CourseType;
+  course: Course;
   className?: string;
 };
 
@@ -23,7 +23,7 @@ const CourseCard = ({ course, className }: PropsTypes) => {
         sizes="100vw"
         width={0}
         height={0}
-        src={course.image}
+        src={course.thumbnail}
         alt={course.name}
       />
 
@@ -32,9 +32,9 @@ const CourseCard = ({ course, className }: PropsTypes) => {
           {course.name}
         </h3>
         <p className="text-justify mb-2">
-          {course.title.length > 70
-            ? course.title.slice(0, 70) + "..."
-            : course.title}
+          {course.name.length > 70
+            ? course.name.slice(0, 70) + "..."
+            : course.name}
         </p>
 
         <Link href={`/courses/${course.id}`}>

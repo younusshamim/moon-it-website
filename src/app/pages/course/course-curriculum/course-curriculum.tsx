@@ -6,7 +6,7 @@ import GradientText from "@/components/gradient-text";
 import PrimaryButton from "@/components/primary-button";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { CurriculumSectionType } from "@/types/course";
+import type { CurriculumSectionType } from "@/types/course-legacy";
 import CourseSection from "./course-section";
 
 type PropsTypes = {

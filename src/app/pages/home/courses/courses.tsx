@@ -14,13 +14,13 @@ import PrimaryButton from "@/components/primary-button";
 import Tabs from "@/components/tabs";
 import { CarouselItem } from "@/components/ui/carousel";
 import categories from "@/data/categories";
-import courseList from "@/data/course-list";
+import { courses as courseList } from "@/data/course-list";
 import getOptions from "@/lib/utils/get-options";
-import CourseCard from "./course-card";
+import CourseCardNew from "./course-card-new";
 
 const Courses = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | number>(
-    categories[0].name,
+    "language",
   );
   const courses = useMemo(
     () => courseList.filter((course) => course.category === selectedCategory),
@@ -46,10 +46,10 @@ const Courses = () => {
 
         <StaggerContainer>
           <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6">
-            {courses.map((course, index) => {
+            {courses.map((course) => {
               return (
-                <StaggerItem key={course.name + index}>
-                  <CourseCard course={course} />
+                <StaggerItem key={course.slug}>
+                  <CourseCardNew course={course} />
                 </StaggerItem>
               );
             })}
@@ -62,12 +62,9 @@ const Courses = () => {
           className="block md:hidden"
           dotsClassName="bg-gray-500"
         >
-          {courses.map((course, index) => (
-            <CarouselItem
-              key={course.name + index}
-              className="basis-4/5 sm:basis-1/2"
-            >
-              <CourseCard course={course} />
+          {courses.map((course) => (
+            <CarouselItem key={course.slug} className="basis-4/5 sm:basis-1/2">
+              <CourseCardNew course={course} />
             </CarouselItem>
           ))}
         </Carousel>

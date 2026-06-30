@@ -116,6 +116,63 @@
   }
 }
 
+/* Rich text content (course "about" etc.) */
+.rich-content {
+  font-size: 17px;
+  line-height: 1.8;
+  color: hsl(var(--foreground));
+}
+
+.rich-content > * + * {
+  margin-top: 1rem;
+}
+
+.rich-content h2,
+.rich-content h3 {
+  font-weight: 700;
+  color: hsl(var(--foreground-dark));
+  margin-top: 1.75rem;
+}
+
+.rich-content h2 {
+  font-size: 1.5rem;
+}
+
+.rich-content h3 {
+  font-size: 1.25rem;
+}
+
+.rich-content ul,
+.rich-content ol {
+  padding-left: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rich-content ul {
+  list-style-type: disc;
+}
+
+.rich-content ol {
+  list-style-type: decimal;
+}
+
+.rich-content li::marker {
+  color: hsl(var(--primary));
+}
+
+.rich-content strong {
+  font-weight: 700;
+  color: hsl(var(--foreground-dark));
+}
+
+.rich-content a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Embla Carousel Styles  */
 .embla {
   overflow: hidden;

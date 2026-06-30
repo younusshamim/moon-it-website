@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import type { CurriculumModuleType } from "@/types/course";
+import type { CurriculumModuleType } from "@/types/course-legacy";
 
 interface CourseModuleProps {
   module: CurriculumModuleType;

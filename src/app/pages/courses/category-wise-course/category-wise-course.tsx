@@ -1,6 +1,6 @@
 import Container from "@/components/container";
 import categories from "@/data/categories";
-import courseList from "@/data/course-list";
+import { courses } from "@/data/course-list";
 import CourseCard from "../../home/courses/course-card";
 
 type PropsType = {
@@ -11,7 +11,7 @@ const CategoryWiseCourses = ({ courseRef }: PropsType) => {
   return (
     <Container className="pt-10 pb-20 flex flex-col gap-16">
       {categories.map((category, index) => {
-        const courses = courseList.filter(
+        const filteredCourses = courses.filter(
           (item) => item.category === category.name,
         );
 
@@ -28,7 +28,7 @@ const CategoryWiseCourses = ({ courseRef }: PropsType) => {
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6">
-              {courses.map((course, index) => {
+              {filteredCourses.map((course, index) => {
                 return <CourseCard course={course} key={course.name + index} />;
               })}
             </div>

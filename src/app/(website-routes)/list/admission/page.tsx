@@ -17,7 +17,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import courseList from "@/data/course-list";
+import { courses } from "@/data/course-list";
 import { convertToBanglaNumber } from "@/lib/utils";
 import type { AdmissionModel } from "@/models/admission.model";
 import type { BaseResponseModel } from "@/models/base";
@@ -32,7 +32,7 @@ const Admission = () => {
 
   // Function to get course name from courseId
   const getCourseName = (courseId: number) => {
-    const course = courseList.find((course) => course.id === courseId);
+    const course = courses.find((course) => course.id === courseId);
     return course ? course.name : "Unknown Course";
   };
 
@@ -94,7 +94,7 @@ const Admission = () => {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">সব কোর্স</SelectItem>
-            {courseList.map((course) => (
+            {courses.map((course) => (
               <SelectItem key={course.id} value={course.id.toString()}>
                 {course.name}
               </SelectItem>

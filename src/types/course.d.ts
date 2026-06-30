@@ -1,37 +1,47 @@
-import { ServiceType } from "./service";
-
-export type DiscountType = {
+export type CourseDiscount = {
   type: "amount" | "percentage";
   value: number;
-  endDate: string;
-} | null;
-
-export type CurriculumLessonType = {
-  title: string;
-  details?: string;
-};
-export type CurriculumModuleType = {
-  title: string;
-  lessons: CurriculumLessonType[];
-};
-export type CurriculumSectionType = {
-  title: string;
-  modules: CurriculumModuleType[];
+  endDate: string; // "MM/DD/YYYY" — matches the legacy date parsing format
 };
 
-export interface CourseType {
-  id: number;
+export type CoursePricing = {
+  fee: number;
+  discount?: CourseDiscount;
+};
+
+export type CourseVariation = {
+  id: string; // e.g. "a1"
+  name: string; // e.g. "লেভেল A1"
+  subtitle?: string; // short single-line note (duration etc.)
+  recommended?: boolean; // highlights the chip as the suggested pick
+  pricing: CoursePricing;
+};
+
+export type CurriculumModule = {
+  title: string; // e.g. "মৌলিক ভিত্তি ও উচ্চারণ"
+  topics: string[]; // topics/skills covered in this module
+};
+
+export type Instructor = {
+  name: string;
+  picture: string; // e.g. "/instructors/male-instructor.png"
+  highlights: string[]; // experience/education/etc. — rendered "·"-separated, no labels
+};
+
+export type Course = {
+  id: string; // slug-like unique id
+  admissionCourseId: number; // bridges to the existing admission action/dropdown
   name: string;
   slug: string;
-  title: string;
-  description1?: string;
-  description2?: string;
-  description3?: string;
-  category: string;
-  image: string;
-  fee: number;
-  discount: DiscountType;
-  metorIds: number[];
-  services: ServiceType[];
-  curriculum?: CurriculumSectionType[];
-}
+  category: string; // must match a `name` in src/data/categories.ts
+  briefDescription: string; // course-card text + meta description
+  descriptionParagraphs: string[]; // 2–3 short paragraphs shown in hero
+  thumbnail: string; // e.g. "/courses/german-language.jpg"
+  youtubeUrl?: string; // optional — enables the play overlay + popup
+  pricing?: CoursePricing; // used when there are NO variations
+  variations?: CourseVariation[]; // used when the course has variations
+  features: string[]; // core features, one line each
+  curriculum?: CurriculumModule[]; // flat list of modules (no week/day labels)
+  instructors?: Instructor[]; // one or more course instructors
+  about: string; // rich HTML string (future: Sanity)
+};
