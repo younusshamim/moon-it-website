@@ -14,14 +14,7 @@ import EnrollButton from "../enroll-button/enroll-button";
 const PHONE_NUMBER = "+8801785882381";
 
 const CoursePricingCard = ({ course }: { course: Course }) => {
-  const {
-    name,
-    thumbnail,
-    youtubeUrl,
-    pricing,
-    variations,
-    admissionCourseId,
-  } = course;
+  const { name, thumbnail, youtubeUrl, pricing, variations, id } = course;
 
   const hasVariations = !!variations?.length;
   const showSelector = (variations?.length ?? 0) > 1;
@@ -125,7 +118,7 @@ const CoursePricingCard = ({ course }: { course: Course }) => {
         <div className="mt-1 flex flex-col gap-3">
           {activePricing ? (
             <EnrollButton
-              initialCourseId={admissionCourseId}
+              initialCourseId={id}
               initialVariationId={hasVariations ? selectedId : undefined}
               className="w-full"
             >

@@ -7,7 +7,7 @@ import AdmissionFormModal from "../../course/admission-form-modal/admission-form
 
 type PropsTypes = {
   /** Legacy admission course id (bridges to the admission action/dropdown). */
-  initialCourseId: number;
+  initialCourseId: string;
   /** Pre-selected variation id, when the course has variations. */
   initialVariationId?: string;
   children: ReactNode;

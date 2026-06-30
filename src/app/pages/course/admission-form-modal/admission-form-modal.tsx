@@ -23,16 +23,16 @@ type PropsTypes = {
   setSubmittedModal: (isOpen: boolean) => void;
   className?: string;
   /** Legacy admission course id of the course the user enrolled from. */
-  initialCourseId: number;
+  initialCourseId: string;
   /** Pre-selected variation id, when the course has variations. */
   initialVariationId?: string;
 };
 
-const findCourse = (courseId?: number) =>
-  courses.find((course) => course.admissionCourseId === courseId);
+const findCourse = (courseId?: string) =>
+  courses.find((course) => course.id === courseId);
 
 /** Resolves the effective fee (after discount) for a course + variation. */
-const resolveFee = (courseId?: number, variationId?: string) => {
+const resolveFee = (courseId?: string, variationId?: string) => {
   const course = findCourse(courseId);
   if (!course) return undefined;
   const pricing = course.variations?.length
@@ -98,7 +98,7 @@ const AdmissionFormModal = ({
 
   const courseOptions = courses.map((course) => ({
     label: course.name,
-    value: course.admissionCourseId.toString(),
+    value: course.id.toString(),
   }));
 
   const variationOptions = variations.map((variation) => ({

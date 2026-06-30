@@ -4,7 +4,6 @@ import type { Course } from "@/types/course";
 export const courses: Course[] = [
   {
     id: "german-language",
-    admissionCourseId: 20,
     name: "জার্মান ল্যাঙ্গুয়েজ",
     slug: "german-language",
     category: "language",
@@ -120,7 +119,6 @@ export const courses: Course[] = [
   },
   {
     id: "graphics-design",
-    admissionCourseId: 1,
     name: "প্রফেশনাল গ্রাফিক ডিজাইন",
     slug: "graphics-design",
     category: "it",

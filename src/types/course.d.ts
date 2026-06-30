@@ -30,7 +30,6 @@ export type Instructor = {
 
 export type Course = {
   id: string; // slug-like unique id
-  admissionCourseId: number; // bridges to the existing admission action/dropdown
   name: string;
   slug: string;
   category: string; // must match a `name` in src/data/categories.ts
