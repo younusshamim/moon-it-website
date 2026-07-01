@@ -6,10 +6,13 @@
  * Returns null when the id cannot be parsed.
  */
 export const getYoutubeId = (url: string): string | null => {
+  // A YouTube id is exactly 11 chars. The trailing `(?![\w-])` boundary rejects
+  // longer tokens (e.g. a placeholder like `watch?v=graphics-design-demo`) so we
+  // return null instead of silently truncating to a bogus 11-char id.
   const patterns = [
-    /(?:youtube\.com\/watch\?v=)([\w-]{11})/,
-    /(?:youtu\.be\/)([\w-]{11})/,
-    /(?:youtube\.com\/embed\/)([\w-]{11})/,
+    /(?:youtube\.com\/watch\?v=)([\w-]{11})(?![\w-])/,
+    /(?:youtu\.be\/)([\w-]{11})(?![\w-])/,
+    /(?:youtube\.com\/embed\/)([\w-]{11})(?![\w-])/,
   ];
 
   for (const pattern of patterns) {
@@ -38,7 +41,6 @@ export const getYoutubeEmbedUrl = (
 
   const params = new URLSearchParams({
     autoplay: "1",
-    mute: "1",
     playsinline: "1",
     rel: "0",
   });
