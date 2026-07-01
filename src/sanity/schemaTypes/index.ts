@@ -1,7 +1,9 @@
 import type { SchemaTypeDefinition } from "sanity";
 
+import { admissionSubmission } from "./documents/admissionSubmission";
 import { course } from "./documents/course";
 import { instructor } from "./documents/instructor";
+import { seminarSubmission } from "./documents/seminarSubmission";
 import { courseDiscount } from "./objects/courseDiscount";
 import { coursePricing } from "./objects/coursePricing";
 import { courseVariation } from "./objects/courseVariation";
@@ -12,6 +14,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     // Documents
     course,
     instructor,
+    admissionSubmission,
+    seminarSubmission,
     // Objects
     coursePricing,
     courseDiscount,

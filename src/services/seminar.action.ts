@@ -1,10 +1,11 @@
 "use server";
 
 import { ZodError } from "zod";
+import { getCourseBySlug } from "@/data/course-list";
+import { sendSeminarEmail } from "@/lib/email/notify-submission";
 import type { BaseResponseModel } from "@/models/base";
-import { Seminar } from "@/schemas/mongoose/seminar.schema";
+import { writeClient } from "@/sanity/lib/write-client";
 import { seminarSchema } from "@/schemas/zod/seminar.schema";
-import { connectToDatabase } from "../config/db";
 
 export const onJoinSeminar = async (
   prevState: BaseResponseModel,
@@ -12,12 +13,30 @@ export const onJoinSeminar = async (
 ): Promise<BaseResponseModel> => {
   try {
     const data = seminarSchema.parse(formData);
-    await connectToDatabase();
-    const seminar = new Seminar(data);
-    const result = await seminar.save();
+
+    // Resolve the course name from its slug for a readable record + email.
+    const course = await getCourseBySlug(data.courseId);
+
+    await writeClient.create({
+      _type: "seminarSubmission",
+      name: data.name,
+      contactNo: data.contactNo,
+      courseId: data.courseId,
+      courseName: course?.name,
+      attendPosibility: data.attendPosibility,
+      address: data.address,
+    });
+
+    // Best-effort — a failed email must not fail an already-saved submission.
+    await sendSeminarEmail({
+      name: data.name,
+      contactNo: data.contactNo,
+      courseName: course?.name,
+      attendPosibility: data.attendPosibility,
+      address: data.address,
+    });
 
     return {
-      data: result,
       status: "success",
       message: `Welcome, Your form submitted successfully!`,
     };
@@ -29,28 +48,10 @@ export const onJoinSeminar = async (
       };
     }
 
+    console.error("onJoinSeminar error:", error);
     return {
       status: "error",
       message: "Something went wrong. Please try again.",
-    };
-  }
-};
-
-export const getSeminars = async (): Promise<BaseResponseModel> => {
-  try {
-    await connectToDatabase();
-    const seminars = await Seminar.find().sort({ createdAt: -1 });
-
-    return {
-      data: seminars,
-      status: "success",
-      message: "Seminars fetched successfully",
-    };
-  } catch (error) {
-    console.log({ error });
-    return {
-      status: "error",
-      message: "Failed to fetch seminars",
     };
   }
 };

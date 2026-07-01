@@ -7,7 +7,7 @@ export const admissionSchema = z.object({
     .min(1, { message: "নাম আবশ্যক" })
     .regex(englishRegex, { message: "নাম ইংরেজি ভাষায় হতে হবে" }),
   contactNo: validateContactNo,
-  courseId: z.number({ message: "কোর্স সিলেক্ট করুন" }),
+  courseId: z.string().min(1, { message: "কোর্স সিলেক্ট করুন" }),
   variationId: z.string().optional(),
   courseFee: z.string().optional(),
   address: z.string().optional(),
