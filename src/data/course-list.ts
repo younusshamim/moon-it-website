@@ -1,234 +1,40 @@
-import { instructors } from "@/data/instructor-list";
-import type { Course } from "@/types/course";
+import { client } from "@/sanity/lib/client";
+import {
+  COURSE_BY_SLUG_QUERY,
+  COURSE_OPTIONS_QUERY,
+  COURSE_SLUGS_QUERY,
+  COURSES_QUERY,
+} from "@/sanity/lib/queries";
+import type { Course, CourseOption } from "@/types/course";
 
-export const courses: Course[] = [
-  {
-    id: "german-language",
-    name: "জার্মান ল্যাঙ্গুয়েজ",
-    slug: "german-language",
-    category: "language-course",
-    briefDescription:
-      "মুন আইটি'তে জার্মান ভাষার A1, A2 ও B1 লেভেলের কোর্স চলমান। অভিজ্ঞ প্রশিক্ষকের তত্ত্বাবধানে স্ট্যান্ডার্ড ক্যারিকুলামে শিখুন জার্মান ভাষা।",
-    descriptionParagraphs: [
-      "জার্মানিতে উচ্চশিক্ষা, চাকরি কিংবা স্থায়ীভাবে বসবাসের জন্য জার্মান ভাষা জানা অত্যন্ত গুরুত্বপূর্ণ। মুন আইটি'তে রয়েছে A1, A2 এবং B1 — এই তিনটি লেভেলের সম্পূর্ণ কোর্স।",
-      "Goethe Institut-এর অনুরূপ স্ট্যান্ডার্ড ক্যারিকুলাম ও Netzwerk neu বইয়ের আলোকে ক্লাস পরিচালিত হয়। প্রতিটি লেভেল শেষে রয়েছে মক টেস্টের সুযোগ।",
-      "জার্মানিতে ১৫ বছর বসবাস ও শিক্ষাগ্রহণ করা অভিজ্ঞ প্রশিক্ষকের কাছ থেকে শেখার পাশাপাশি জার্মান ভিসা প্রসেসিংয়ে সর্বোচ্চ সহযোগিতা পাবেন।",
-    ],
-    thumbnail: "/courses/german-language.jpg",
-    youtubeUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    variations: [
-      {
-        id: "a1",
-        name: "লেভেল A1",
-        subtitle: "শুরু থেকে — সম্পূর্ণ বিগিনার লেভেল",
-        pricing: {
-          fee: 12000,
-          discount: { type: "amount", value: 2000, endDate: "12/31/2026" },
-        },
-      },
-      {
-        id: "a2",
-        name: "লেভেল A2",
-        subtitle: "প্রাথমিক দক্ষতা অর্জনের পরবর্তী লেভেল",
-        pricing: { fee: 14000 },
-      },
-      {
-        id: "b1",
-        name: "লেভেল B1",
-        subtitle: "ইন্টারমিডিয়েট লেভেল — ভিসা ও জব প্রায়োরিটির জন্য",
-        pricing: { fee: 16000 },
-      },
-    ],
-    features: [
-      "প্রতি লেভেল ৩-৪ মাসে সম্পন্ন হবে",
-      "সপ্তাহে ২ দিন অফলাইন ক্লাস",
-      "জার্মান ভিসা প্রসেসিংয়ে সর্বোচ্চ সহযোগিতা",
-      "ল্যাঙ্গুয়েজ ক্লাব সুবিধা",
-      "স্ট্যান্ডার্ড কোর্স ক্যারিকুলাম ও মক টেস্ট",
-      "অভিজ্ঞ জার্মান ভাষা প্রশিক্ষক",
-    ],
-    curriculum: [
-      {
-        title: "মৌলিক ভিত্তি ও উচ্চারণ",
-        topics: [
-          "জার্মান বর্ণমালা ও সঠিক উচ্চারণ",
-          "সম্ভাষণ ও আত্মপরিচয়",
-          "সংখ্যা, সময় ও তারিখ",
-          "মৌলিক শব্দভাণ্ডার",
-        ],
-      },
-      {
-        title: "দৈনন্দিন কথোপকথন",
-        topics: [
-          "পরিবার ও পরিচিতি নিয়ে কথা বলা",
-          "কেনাকাটা ও দাম জিজ্ঞাসা",
-          "দিকনির্দেশনা ও যাতায়াত",
-          "রেস্তোরাঁ ও খাবার অর্ডার",
-        ],
-      },
-      {
-        title: "ব্যাকরণ ও বাক্যগঠন",
-        topics: [
-          "Artikel (der, die, das) ও Nomen",
-          "Verben ও বর্তমান কাল",
-          "বাক্য গঠনের নিয়ম",
-          "Akkusativ ও Dativ-এর প্রাথমিক ধারণা",
-        ],
-      },
-      {
-        title: "শব্দভাণ্ডার ও পঠন দক্ষতা",
-        topics: [
-          "থিম-ভিত্তিক শব্দভাণ্ডার সম্প্রসারণ",
-          "ছোট অনুচ্ছেদ ও সংলাপ পড়া",
-          "তথ্য খুঁজে বের করা",
-          "Netzwerk neu বইয়ের অনুশীলন",
-        ],
-      },
-      {
-        title: "লিসেনিং ও স্পিকিং",
-        topics: [
-          "অডিও শুনে বোঝা ও উত্তর দেওয়া",
-          "সাবলীল কথোপকথন অনুশীলন",
-          "উচ্চারণ ও স্বরভঙ্গি উন্নয়ন",
-          "জোড়ায় ও দলগত অনুশীলন",
-        ],
-      },
-      {
-        title: "পরীক্ষা প্রস্তুতি ও মক টেস্ট",
-        topics: [
-          "Goethe ফরম্যাট অনুযায়ী প্রস্তুতি",
-          "লেভেলভিত্তিক মক টেস্ট",
-          "রাইটিং ও স্পিকিং মূল্যায়ন",
-          "পরীক্ষার কৌশল ও ফিডব্যাক",
-        ],
-      },
-    ],
-    instructors: [instructors.rubelRana],
-    about: `
-      <p>মুন আইটি'র জার্মান ল্যাঙ্গুয়েজ কোর্সটি সাজানো হয়েছে আন্তর্জাতিক মানের ক্যারিকুলাম অনুসরণ করে, যেন শিক্ষার্থীরা ধাপে ধাপে A1 থেকে B1 পর্যন্ত আত্মবিশ্বাসের সাথে জার্মান ভাষায় দক্ষ হয়ে উঠতে পারেন।</p>
-      <h3>কোর্সে যা শিখবেন</h3>
-      <ul>
-        <li>জার্মান ভাষার ব্যাকরণ, শব্দভাণ্ডার ও সঠিক উচ্চারণ</li>
-        <li>দৈনন্দিন কথোপকথন ও বাস্তব জীবনের পরিস্থিতিতে ভাষার ব্যবহার</li>
-        <li>রিডিং, রাইটিং, লিসেনিং ও স্পিকিং — চারটি দক্ষতার সমন্বিত অনুশীলন</li>
-        <li>Goethe Institut পরীক্ষার ধরন অনুযায়ী মক টেস্ট</li>
-      </ul>
-      <h3>কাদের জন্য উপযোগী</h3>
-      <p>যারা জার্মানিতে <strong>উচ্চশিক্ষা, চাকরি বা স্থায়ী বসবাসের</strong> পরিকল্পনা করছেন, কিংবা নতুন একটি ভাষা শিখে নিজের ক্যারিয়ারকে এগিয়ে নিতে চান — এই কোর্সটি তাদের জন্য আদর্শ।</p>
-    `,
-  },
-  {
-    id: "graphics-design",
-    name: "প্রফেশনাল গ্রাফিক ডিজাইন",
-    slug: "graphics-design",
-    category: "it-course",
-    briefDescription:
-      "গ্রাফিক ডিজাইন একটি জনপ্রিয় ও সৃজনশীল পেশা। Adobe Photoshop, Illustrator সহ বিভিন্ন সফটওয়্যার ব্যবহার করে বিজনেস কার্ড, লোগো, ব্রোশিওর, ফ্লায়ার সহ ৫০+ প্রজেক্ট ডিজাইন শিখুন।",
-    descriptionParagraphs: [
-      "গ্রাফিক ডিজাইন বর্তমান সময়ে একটি জনপ্রিয় পেশা। এ কাজটি একই সাথে আনন্দদায়ক এবং সৃজনশীল। যদি আপনার মাঝে ক্রিয়েটিভিটি থাকে আর স্বাধীনভাবে কাজ করতে চান তাহলে প্রফেশনাল অথবা ফ্রিল্যান্স গ্রাফিক ডিজাইনার হিসেবে গড়ে তুলতে পারেন নিজেকে।",
-      "এ কোর্সটি বিজনেজ কার্ড, আইডি কার্ড, লোগো ডিজাইন, ব্রোশিওর ডিজাইন, ক্যালেন্ডার ডিজাইন, লেটারহেড, ফ্লায়ার কার্ড ও মকাপ ডিজাইন সহ প্রায় ৫০টি প্রজেক্ট ডিজাইনের সমন্বয়ে গঠিত।",
-      "ইন্ডাস্ট্রির অভিজ্ঞ ডিজাইনারদের কাছ থেকে হাতে-কলমে শিখুন এবং আপনার পোর্টফোলিও তৈরি করুন। ফ্রিল্যান্সিং এবং আন্তর্জাতিক বাজারে সফল হওয়ার জন্য প্রয়োজনীয় সকল দক্ষতা অর্জন করুন।",
-    ],
-    thumbnail: "/courses/graphic-design-new.jpg",
-    youtubeUrl: "https://www.youtube.com/watch?v=graphics-design-demo",
-    variations: [
-      {
-        id: "photoshop",
-        name: "৩ মাস মেয়াদী",
-        subtitle: "ফটো এডিটিং, রিটাচিং ও ম্যানিপুলেশন",
-        pricing: { fee: 8000 },
-      },
-      {
-        id: "complete",
-        name: "৬ মাস মেয়াদী",
-        subtitle: "Photoshop + Illustrator — ৫০+ প্রজেক্ট সহ",
-        recommended: true,
-        pricing: {
-          fee: 14500,
-          discount: { type: "amount", value: 6000, endDate: "09/20/2027" },
-        },
-      },
-    ],
-    features: [
-      "কোর্সের সময়কাল ৪-৬ মাস",
-      "সপ্তাহে ৩ দিন অফলাইন ক্লাস",
-      "Adobe Photoshop & Illustrator মাস্টারি",
-      "৫০+ বাস্তব প্রজেক্ট কাজের অভিজ্ঞতা",
-      "ইন্ডাস্ট্রি এক্সপার্ট ট্রেইনার",
-      "লাইফটাইম সাপোর্ট এবং ক্লাস রেকর্ড",
-    ],
-    curriculum: [
-      {
-        title: "ডিজাইনের মৌলিক ধারণা",
-        topics: [
-          "ডিজাইন প্রিন্সিপাল ও কম্পোজিশন",
-          "কালার থিওরি ও কালার পরিচিতি",
-          "টাইপোগ্রাফি ও ফন্ট নির্বাচন",
-          "ডিজাইন সফটওয়্যার ও ইন্টারফেস পরিচিতি",
-        ],
-      },
-      {
-        title: "Adobe Photoshop মাস্টারি",
-        topics: [
-          "লেয়ার, মাস্ক ও সিলেকশন টুলস",
-          "ফটো রিটাচিং ও কালার কারেকশন",
-          "ফটো ম্যানিপুলেশন ও কম্পোজিটিং",
-          "ব্যানার ও সোশ্যাল মিডিয়া পোস্ট ডিজাইন",
-        ],
-      },
-      {
-        title: "Adobe Illustrator মাস্টারি",
-        topics: [
-          "পেন টুল ও ভেক্টর শেইপ তৈরি",
-          "লোগো ও আইকন ডিজাইন",
-          "টাইপোগ্রাফি ও আর্টওয়ার্ক তৈরি",
-          "ইলাস্ট্রেশন ও প্যাটার্ন ডিজাইন",
-        ],
-      },
-      {
-        title: "ব্র্যান্ডিং ও আইডেন্টিটি ডিজাইন",
-        topics: [
-          "বিজনেস কার্ড ও আইডি কার্ড ডিজাইন",
-          "লেটারহেড ও ব্র্যান্ড গাইডলাইন",
-          "ব্রোশিওর ও ক্যাটালগ ডিজাইন",
-          "লোগো ভ্যারিয়েশন ও ব্র্যান্ড কিট তৈরি",
-        ],
-      },
-      {
-        title: "প্রিন্ট ও মার্কেটিং ডিজাইন",
-        topics: [
-          "ফ্লায়ার ও পোস্টার ডিজাইন",
-          "ক্যালেন্ডার ও ইনভাইটেশন কার্ড ডিজাইন",
-          "প্যাকেজিং ও লেবেল ডিজাইন",
-          "প্রিন্ট-রেডি ফাইল প্রস্তুতকরণ (Bleed, CMYK)",
-        ],
-      },
-      {
-        title: "মকআপ, পোর্টফোলিও ও ফ্রিল্যান্সিং",
-        topics: [
-          "রিয়েলিস্টিক মকআপ ডিজাইন",
-          "প্রজেক্ট প্রেজেন্টেশন তৈরি",
-          "পোর্টফোলিও সাজানো ও পাবলিশ করা",
-          "ফ্রিল্যান্স মার্কেটপ্লেসে কাজ শুরু করার কৌশল",
-        ],
-      },
-    ],
-    instructors: [instructors.iftikharHossain],
-    about: `
-      <p>মুন আইটি'র প্রফেশনাল গ্রাফিক ডিজাইন কোর্স আপনাকে একজন দক্ষ ডিজাইনার হিসেবে গড়ে তুলবে। Adobe Creative Suite-এর শক্তিশালী টুলস ব্যবহার করে আপনি শিখবেন কীভাবে পেশাদার মানের ডিজাইন তৈরি করতে হয়।</p>
-      <h3>কোর্সে যা শিখবেন</h3>
-      <ul>
-        <li>Adobe Photoshop এবং Illustrator এর সম্পূর্ণ দক্ষতা</li>
-        <li>ডিজাইন নীতি, রঙ তত্ত্ব এবং টাইপোগ্রাফি</li>
-        <li>ব্র্যান্ডিং, লোগো এবং প্যাকেজিং ডিজাইন</li>
-        <li>প্রকৃত প্রকল্পের মাধ্যমে বাস্তব অভিজ্ঞতা</li>
-      </ul>
-      <h3>কাদের জন্য উপযোগী</h3>
-      <p>যারা <strong>ক্রিয়েটিভ ফিল্ডে ক্যারিয়ার</strong> গড়তে চান অথবা <strong>ফ্রিল্যান্সিং এ আগ্রহী</strong>, এবং নিজের সৃজনশীলতা দিয়ে আয় করতে চান — এই কোর্সটি আপনার জন্য আদর্শ।</p>
-    `,
-     isAffiliated: true,
-  },
-];
+// Content changes rarely; revalidate on a short interval so Studio edits show
+// up quickly without hitting Sanity on every request.
+const fetchOptions = { next: { revalidate: 300 } } as const;
 
-export const getCourseBySlug = (slug: string) =>
-  courses.find((course) => course.slug === slug);
+/** All courses (card fields), ordered for grids and the home carousel. */
+export const getCourses = async (): Promise<Course[]> =>
+  (await client.fetch(COURSES_QUERY, {}, fetchOptions)) as Course[];
+
+/** Full course for the detail page, or `null` when the slug is unknown. */
+export const getCourseBySlug = async (slug: string): Promise<Course | null> =>
+  (await client.fetch(
+    COURSE_BY_SLUG_QUERY,
+    { slug },
+    fetchOptions,
+  )) as Course | null;
+
+/** Lightweight list for the admission + seminar dropdowns. */
+export const getCourseOptions = async (): Promise<CourseOption[]> =>
+  (await client.fetch(
+    COURSE_OPTIONS_QUERY,
+    {},
+    fetchOptions,
+  )) as CourseOption[];
+
+/** Course slugs for generateStaticParams and the sitemap. */
+export const getCourseSlugs = async (): Promise<string[]> => {
+  const rows = (await client.fetch(COURSE_SLUGS_QUERY, {}, fetchOptions)) as {
+    slug: string;
+  }[];
+  return rows.map((row) => row.slug);
+};

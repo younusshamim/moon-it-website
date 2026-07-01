@@ -1,3 +1,4 @@
+import { getCourses } from "@/data/course-list";
 import AffilietedBy from "../pages/home/affilieted-by/affilieted-by";
 import Courses from "../pages/home/courses/courses";
 import FreeSeminar from "../pages/home/free-seminar/free-seminar";
@@ -8,7 +9,9 @@ import AboutUs from "../shared/about-us/about-us";
 import Logos from "../shared/logos/logos";
 import Navbar from "../shared/navbar/navbar";
 
-export default function Home() {
+export default async function Home() {
+  const courses = await getCourses();
+
   return (
     <>
       <HeroImageWrapper>
@@ -18,7 +21,7 @@ export default function Home() {
         <AffilietedBy />
       </HeroImageWrapper>
 
-      <Courses />
+      <Courses courses={courses} />
       <Services />
       <AboutUs />
       <Logos />

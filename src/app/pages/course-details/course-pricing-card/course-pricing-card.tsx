@@ -37,7 +37,7 @@ const CoursePricingCard = ({ course }: { course: Course }) => {
 
   const selectedVariation = variations?.find((v) => v.id === selectedId);
   const activePricing: CoursePricing | undefined =
-    selectedVariation?.pricing ?? pricing;
+    selectedVariation?.pricing ?? pricing ?? undefined;
 
   const effective = activePricing ? getEffectivePrice(activePricing) : null;
 

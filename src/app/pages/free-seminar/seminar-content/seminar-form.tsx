@@ -5,18 +5,19 @@ import { useSearchParams } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useCourseOptions } from "@/app/shared/course-options/course-options-context";
 import ControlledSelect from "@/components/controlled-select";
 import FormSubmittedModal from "@/components/modals/form-submitted-modal";
 import PrimaryButton from "@/components/primary-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import attendPosibility from "@/data/attend-posibility";
-import { courses } from "@/data/course-list";
 import type { BaseResponseModel } from "@/models/base";
 import { seminarSchema } from "@/schemas/zod/seminar.schema";
 import { onJoinSeminar } from "@/services/seminar.action";
 
 const SeminarForm = () => {
+  const courses = useCourseOptions();
   const [submittdModal, setSubmittedModal] = useState(false);
   const [state, formAction] = useActionState<BaseResponseModel<null>, FormData>(
     onJoinSeminar,

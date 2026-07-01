@@ -6,7 +6,11 @@ export const categoryList: CategoryType[] = [
     icon: "/icons/it.png",
     name: "it-course",
   },
-  { label: "ল্যাঙ্গুয়েজ কোর্স", icon: "/icons/language.png", name: "language-course" },
+  {
+    label: "ল্যাঙ্গুয়েজ কোর্স",
+    icon: "/icons/language.png",
+    name: "language-course",
+  },
   {
     label: "এডভান্সড সার্টিফিকেট কোর্স",
     icon: "/icons/advance-course-module.png",
@@ -19,6 +23,11 @@ export const categoryList: CategoryType[] = [
   },
 ];
 
-const CATEGORIES = ['it-course', 'language-course', 'one-year-course', 'industrial-course'] as const;
+const CATEGORIES = [
+  "it-course",
+  "language-course",
+  "one-year-course",
+  "industrial-course",
+] as const;
 
-export type CategoryName = typeof CATEGORIES[number];
+export type CategoryName = (typeof CATEGORIES)[number];

@@ -1,15 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { CategoryName } from "@/data/categories";
 import { cn } from "@/lib/utils";
-import type { CategoryOptionType,  } from "@/types/option-type";
-import { CategoryName } from "@/data/categories";
+import type { CategoryOptionType } from "@/types/option-type";
 
 type PropsType = {
   tabOptions: CategoryOptionType[];
   selected: CategoryName;
-  setSelected: (item: CategoryName ) => void;
-  className?: string; 
+  setSelected: (item: CategoryName) => void;
+  className?: string;
 };
 
 const CategoryTabs = ({

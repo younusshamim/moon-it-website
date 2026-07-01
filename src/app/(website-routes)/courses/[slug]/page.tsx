@@ -4,39 +4,42 @@ import CourseAbout from "@/app/pages/course-details/course-about/course-about";
 import CourseCurriculum from "@/app/pages/course-details/course-curriculum/course-curriculum";
 import CourseHero from "@/app/pages/course-details/course-hero/course-hero";
 import CourseInstructors from "@/app/pages/course-details/course-instructors/course-instructors";
-import {categoryList} from "@/data/categories";
-import { courses, getCourseBySlug } from "@/data/course-list";
+import { categoryList } from "@/data/categories";
+import { getCourseBySlug, getCourseSlugs } from "@/data/course-list";
 
 type PropsTypes = {
   params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
-  return courses.map((course) => ({ slug: course.slug }));
+  const slugs = await getCourseSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
   params,
 }: PropsTypes): Promise<Metadata> {
   const { slug } = await params;
-  const course = getCourseBySlug(slug);
+  const course = await getCourseBySlug(slug);
   return {
     title: course?.name,
     description: course?.briefDescription,
-    openGraph: {
-      images: {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}${course?.thumbnail}`,
-        width: 1200,
-        height: 630,
-        alt: course?.name,
-      },
-    },
+    openGraph: course?.thumbnail
+      ? {
+          images: {
+            url: course.thumbnail,
+            width: 1200,
+            height: 630,
+            alt: course.name,
+          },
+        }
+      : undefined,
   };
 }
 
 const Course = async ({ params }: PropsTypes) => {
   const { slug } = await params;
-  const course = getCourseBySlug(slug);
+  const course = await getCourseBySlug(slug);
 
   if (!course) {
     return notFound();

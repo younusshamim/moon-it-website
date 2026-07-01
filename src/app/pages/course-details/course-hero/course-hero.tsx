@@ -1,9 +1,9 @@
 import { FaCheck } from "react-icons/fa6";
+import AffiliationBadge from "@/app/shared/affiliation/affiliation-badge";
 import Container from "@/components/container";
 import LineShapes from "@/components/shapes/line-shapes";
 import type { Course } from "@/types/course";
 import CoursePricingCard from "../course-pricing-card/course-pricing-card";
-import AffiliationBadge from "@/app/shared/affiliation/affiliation-badge";
 
 const CourseHero = ({
   course,
@@ -12,7 +12,7 @@ const CourseHero = ({
   course: Course;
   categoryLabel?: string;
 }) => {
-  const { name, descriptionParagraphs, features } = course;
+  const { name, descriptionParagraphs = [], features = [] } = course;
 
   return (
     <Container className="relative flex flex-col-reverse gap-10 pb-12 lg:flex-row lg:items-start lg:gap-16 lg:py-14">

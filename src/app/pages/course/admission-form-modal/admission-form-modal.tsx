@@ -5,17 +5,18 @@ import Image from "next/image";
 import { startTransition, useActionState, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useCourseOptions } from "@/app/shared/course-options/course-options-context";
 import ControlledSelect from "@/components/controlled-select";
 import Modal from "@/components/modal";
 import PrimaryButton from "@/components/primary-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { courses } from "@/data/course-list";
 import { convertToBanglaNumber } from "@/lib/utils";
 import { getEffectivePrice } from "@/lib/utils/pricing";
 import type { BaseResponseModel } from "@/models/base";
 import { admissionSchema } from "@/schemas/zod/admission.schema";
 import { onAdmission } from "@/services/admission.action";
+import type { CourseOption } from "@/types/course";
 
 type PropsTypes = {
   isOpen: boolean;
@@ -28,12 +29,16 @@ type PropsTypes = {
   initialVariationId?: string;
 };
 
-const findCourse = (courseId?: string) =>
+const findCourse = (courses: CourseOption[], courseId?: string) =>
   courses.find((course) => course.id === courseId);
 
 /** Resolves the effective fee (after discount) for a course + variation. */
-const resolveFee = (courseId?: string, variationId?: string) => {
-  const course = findCourse(courseId);
+const resolveFee = (
+  courses: CourseOption[],
+  courseId?: string,
+  variationId?: string,
+) => {
+  const course = findCourse(courses, courseId);
   if (!course) return undefined;
   const pricing = course.variations?.length
     ? course.variations.find((v) => v.id === variationId)?.pricing
@@ -54,8 +59,9 @@ const AdmissionFormModal = ({
     null,
   );
   const [submitting, setSubmitting] = useState(false);
+  const courses = useCourseOptions();
 
-  const initialFee = resolveFee(initialCourseId, initialVariationId);
+  const initialFee = resolveFee(courses, initialCourseId, initialVariationId);
 
   const methods = useForm<any>({
     resolver: zodResolver(admissionSchema),
@@ -82,18 +88,18 @@ const AdmissionFormModal = ({
   // latest pre-selection every time the modal opens.
   useEffect(() => {
     if (!isOpen) return;
-    const fee = resolveFee(initialCourseId, initialVariationId);
+    const fee = resolveFee(courses, initialCourseId, initialVariationId);
     reset({
       courseId: initialCourseId,
       variationId: initialVariationId,
       courseFee: fee !== undefined ? convertToBanglaNumber(fee) : "",
     });
-  }, [isOpen, initialCourseId, initialVariationId, reset]);
+  }, [isOpen, initialCourseId, initialVariationId, courses, reset]);
 
   const selectedCourseId = watch("courseId");
   const selectedVariationId = watch("variationId");
 
-  const selectedCourse = findCourse(selectedCourseId);
+  const selectedCourse = findCourse(courses, selectedCourseId);
   const variations = selectedCourse?.variations ?? [];
 
   const courseOptions = courses.map((course) => ({
@@ -116,9 +122,9 @@ const AdmissionFormModal = ({
       return; // wait for the corrected variation to re-run this effect
     }
 
-    const fee = resolveFee(selectedCourseId, selectedVariationId);
+    const fee = resolveFee(courses, selectedCourseId, selectedVariationId);
     setValue("courseFee", fee !== undefined ? convertToBanglaNumber(fee) : "");
-  }, [selectedCourseId, selectedVariationId, variations, setValue]);
+  }, [courses, selectedCourseId, selectedVariationId, variations, setValue]);
 
   const onSubmit = handleSubmit((data) => {
     startTransition(() => {

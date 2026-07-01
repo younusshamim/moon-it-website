@@ -1,3 +1,4 @@
+import type { PortableTextBlock } from "@portabletext/types";
 import { CategoryName } from "@/data/categories";
 
 export type CourseDiscount = {
@@ -25,25 +26,37 @@ export type CurriculumModule = {
 };
 
 export type Instructor = {
+  id?: string; // slug — stable identifier from Sanity
   name: string;
-  picture: string; // e.g. "/instructors/male-instructor.png"
+  picture: string; // resolved image URL (Sanity CDN)
   highlights: string[]; // experience/education/etc. — rendered "·"-separated, no labels
 };
 
 export type Course = {
-  id: string; // slug-like unique id
+  _id?: string; // Sanity document id
+  id: string; // slug — used as the admission/enrollment identifier
   name: string;
   slug: string;
   category: CategoryName; // must match a `name` in src/data/categories.ts
   briefDescription: string; // course-card text + meta description
-  descriptionParagraphs: string[]; // 2–3 short paragraphs shown in hero
-  thumbnail: string; // e.g. "/courses/german-language.jpg"
+  descriptionParagraphs?: string[]; // 2–3 short paragraphs shown in hero
+  thumbnail: string; // resolved image URL (Sanity CDN)
   youtubeUrl?: string; // optional — enables the play overlay + popup
-  pricing?: CoursePricing; // used when there are NO variations
+  priceModel?: "single" | "variations";
+  pricing?: CoursePricing | null; // used when there are NO variations
   variations?: CourseVariation[]; // used when the course has variations
-  features: string[]; // core features, one line each
+  features?: string[]; // core features, one line each
   curriculum?: CurriculumModule[]; // flat list of modules (no week/day labels)
   instructors?: Instructor[]; // one or more course instructors
-  about: string; // rich HTML string (future: Sanity)
+  about?: PortableTextBlock[]; // rich text (Portable Text) from Sanity
   isAffiliated?: boolean; // whether the course is affiliated with a partner organization
+};
+
+/** Lightweight course shape used by the admission + seminar dropdowns. */
+export type CourseOption = {
+  id: string;
+  name: string;
+  priceModel?: "single" | "variations";
+  pricing?: CoursePricing | null;
+  variations?: Pick<CourseVariation, "id" | "name" | "pricing">[];
 };

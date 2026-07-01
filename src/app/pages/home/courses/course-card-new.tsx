@@ -55,14 +55,6 @@ const CourseCardNew = ({ course, className }: PropsTypes) => {
             : course.briefDescription}
         </p>
 
-        {startingPrice !== null && (
-          <p className="font-bold text-primary mb-1">
-            {course.variations?.length ? "শুরু " : ""}৳
-            <NumSpan>{convertToBanglaNumber(startingPrice)}</NumSpan> টাকা
-            {course.variations?.length ? " থেকে" : ""}
-          </p>
-        )}
-
         <Link href={`/courses/${course.slug}`}>
           <PrimaryButton
             iconRight={<FaArrowRight className="text-primary" />}

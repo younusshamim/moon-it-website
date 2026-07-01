@@ -12,19 +12,17 @@ import Container from "@/components/container";
 import GradientText from "@/components/gradient-text";
 import PrimaryButton from "@/components/primary-button";
 import { CarouselItem } from "@/components/ui/carousel";
-import {categoryList, CategoryName} from "@/data/categories";
-import { courses as courseList } from "@/data/course-list";
-import getOptions from "@/lib/utils/get-options";
+import { type CategoryName, categoryList } from "@/data/categories";
+import type { Course } from "@/types/course";
 import CategoryTabs from "./category-tabs";
 import CourseCardNew from "./course-card-new";
 
-const Courses = () => {
-  const [selectedCategory, setSelectedCategory] = useState<CategoryName>(
-    "it-course"
-  );
+const Courses = ({ courses: courseList }: { courses: Course[] }) => {
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryName>("it-course");
   const courses = useMemo(
     () => courseList.filter((course) => course.category === selectedCategory),
-    [selectedCategory],
+    [courseList, selectedCategory],
   );
   const tabOptions = categoryList.map((item) => ({
     label: String(item.label),
