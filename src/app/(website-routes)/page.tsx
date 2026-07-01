@@ -1,4 +1,5 @@
 import { getCourses } from "@/data/course-list";
+import { getHomeHero } from "@/data/home-hero";
 import AffilietedBy from "../pages/home/affilieted-by/affilieted-by";
 import Courses from "../pages/home/courses/courses";
 import FreeSeminar from "../pages/home/free-seminar/free-seminar";
@@ -10,13 +11,13 @@ import Logos from "../shared/logos/logos";
 import Navbar from "../shared/navbar/navbar";
 
 export default async function Home() {
-  const courses = await getCourses();
+  const [courses, hero] = await Promise.all([getCourses(), getHomeHero()]);
 
   return (
     <>
       <HeroImageWrapper>
         <Navbar />
-        <HeroSection />
+        <HeroSection data={hero} />
         {/* <ServiceOverview /> */}
         <AffilietedBy />
       </HeroImageWrapper>

@@ -64,6 +64,31 @@ export const COURSE_OPTIONS_QUERY = defineQuery(`
   }
 `);
 
+/** Editable content for the home page hero (singleton). */
+export const HOME_HERO_QUERY = defineQuery(`
+  *[_type == "homeHero"][0]{
+    badge,
+    titleBefore,
+    titleHighlight,
+    titleAfter,
+    description,
+    "thumbnail": thumbnail.asset->url,
+    youtubeUrl
+  }
+`);
+
+/** Editable content for the shared About Us section (singleton). */
+export const ABOUT_US_QUERY = defineQuery(`
+  *[_type == "aboutUs"][0]{
+    badge,
+    titleBefore,
+    titleHighlight,
+    titleAfter,
+    paragraphs,
+    "images": images[].asset->url
+  }
+`);
+
 /** All instructors, ordered — for the mentors grid. */
 export const INSTRUCTORS_QUERY = defineQuery(`
   *[_type == "instructor"] | order(order asc, name asc) {

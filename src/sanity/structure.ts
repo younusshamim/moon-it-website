@@ -1,4 +1,10 @@
-import { BookIcon, DocumentIcon, UserIcon } from "@sanity/icons";
+import {
+  BookIcon,
+  DocumentIcon,
+  HomeIcon,
+  InfoOutlineIcon,
+  UserIcon,
+} from "@sanity/icons";
 import type { StructureResolver } from "sanity/structure";
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
@@ -6,6 +12,15 @@ export const structure: StructureResolver = (S) =>
   S.list()
     .title("Content")
     .items([
+      S.listItem()
+        .title("Home Hero")
+        .icon(HomeIcon)
+        .child(S.document().schemaType("homeHero").documentId("homeHero")),
+      S.listItem()
+        .title("About Us")
+        .icon(InfoOutlineIcon)
+        .child(S.document().schemaType("aboutUs").documentId("aboutUs")),
+      S.divider(),
       S.listItem()
         .title("Courses")
         .icon(BookIcon)

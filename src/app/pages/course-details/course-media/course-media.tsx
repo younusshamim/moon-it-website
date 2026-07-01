@@ -21,7 +21,8 @@ const CourseMedia = ({
   className,
 }: PropsTypes) => {
   const [isOpen, setIsOpen] = useState(false);
-  const origin = typeof window !== "undefined" ? window.location.origin : undefined;
+  const origin =
+    typeof window !== "undefined" ? window.location.origin : undefined;
   const embedUrl = youtubeUrl ? getYoutubeEmbedUrl(youtubeUrl, origin) : null;
 
   const thumbnailImage = (
