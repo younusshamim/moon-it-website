@@ -19,10 +19,10 @@ const Address = () => {
         মেইলে কিংবা ফেসবুক ম্যাসেঞ্জারেও নক দিতে পারেন।
       </h2>
 
-      <div className="flex flex-col-reverse xl:flex-row items-center gap-10 relative">
+      <div className="flex flex-col-reverse lg:flex-row items-center gap-10 relative">
         <LineShapes />
 
-        <div className="w-full xl:w-3/5 z-40">
+        <div className="w-full md:w-3/5 z-40">
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <StaggerItem className="hover:scale-105 duration-500 bg-red-50 dark:bg-card p-5 rounded-card flex flex-col justify-center shadow-sm">
               <p className="font-bold text-lg">ঠিকানা-</p>
@@ -65,7 +65,7 @@ const Address = () => {
           </StaggerContainer>
         </div>
 
-        <div className="w-full xl:w-2/5 z-40">
+        <div className="w-full md:w-2/5 z-40">
           <Image
             className="w-full h-auto  hover:scale-[1.02] transition-all duration-500"
             sizes="100vw"

@@ -16,7 +16,7 @@ const FreeSeminar = () => {
     <>
       <PageHeader />
 
-      <Container className="py-10 flex flex-col xl:flex-row gap-10 items-center relative">
+      <Container className="py-10 flex flex-col lg:flex-row gap-10 items-center relative">
         <LineShapes />
         <SeminarContent />
         <SeminarImageWrap />

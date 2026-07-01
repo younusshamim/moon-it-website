@@ -3,7 +3,7 @@ import SeminarForm from "./seminar-form";
 
 const SeminarContent = () => {
   return (
-    <div className="w-full xl:w-3/5 p-3 lg:p-10 z-40">
+    <div className="w-full md:w-3/5 p-3 md:p-10 z-40">
       <h1 className="spacing text-3xl mb-[6px] font-black text-foreground-dark text-center">
         জয়েন <GradientText>ফ্রি সেমিনার</GradientText>
       </h1>

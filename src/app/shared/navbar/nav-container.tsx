@@ -36,7 +36,7 @@ const NavContainer = ({ logoWidth, mobileNavClassNames }: PropsType) => {
 
   return (
     <>
-      <Container className="h-full flex items-center justify-between ">
+      <Container className="h-full flex items-center justify-between">
         <Link href="/">
           <Image
             src="/logo/logo.png"
@@ -85,9 +85,9 @@ const NavContainer = ({ logoWidth, mobileNavClassNames }: PropsType) => {
         <Container
           className={cn("space-y-4 mt-5 py-5 pl-5", mobileNavClassNames)}
         >
-          {navItems.map((item, index) => (
+          {navItems.map((item) => (
             <div
-              key={item.name + index}
+              key={item.name}
               onClick={() => handleNavigate(item.link)}
               className={cn("", {
                 "text-primary-lighter": pathname === item.link,
