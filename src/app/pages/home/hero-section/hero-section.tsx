@@ -7,7 +7,7 @@ import GradientText from "@/components/gradient-text";
 import PrimaryButton from "@/components/primary-button";
 import { heroImages } from "@/data/focused-images";
 import type { HomeHero } from "@/types/home-hero";
-import CourseMedia from "../../course-details/course-media/course-media";
+import HeroMedia from "./hero-media";
 import LineShapes from "./line-shapes";
 
 // Fallback copy so the hero renders correctly before the Sanity singleton is set.
@@ -32,21 +32,23 @@ const HeroSection = ({ data }: PropsTypes) => {
     <div className="relative">
       <LineShapes />
 
-      <Container className="py-9 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-28">
-        <div className="w-full flex flex-col gap-4 lg:gap-7 z-40 items-center lg:items-start text-center lg:text-start">
-          <h3 className="font-bold text-[17px] shadow-md dark:bg-background2 rounded-btn w-fit px-3 pt-2 pb-1">
+      <Container className="pt-6 pb-14 lg:pt-16 lg:pb-20 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
+        <div className="w-full lg:w-1/2 flex flex-col gap-5 lg:gap-7 z-40 items-center lg:items-start text-center lg:text-start">
+          <span className="inline-flex items-center font-bold text-[17px] shadow-md bg-background2 rounded-btn w-fit px-4 pt-2 pb-1">
             <BsStars className="inline text-xl text-primary mr-1" />
             {hero.badge}
-          </h3>
+          </span>
 
-          <h2 className="text-foreground-dark font-extrabold text-[40px] lg:text-[52px] leading-snug">
+          <h1 className="text-foreground-dark font-extrabold text-[32px] sm:text-[40px] lg:text-[46px] xl:text-[54px] leading-tight tracking-tight">
             {hero.titleBefore}{" "}
             <GradientText>{hero.titleHighlight}</GradientText> {hero.titleAfter}
-          </h2>
+          </h1>
 
-          <h1 className="lg:text-justify lg:text-lg">{hero.description}</h1>
+          <p className="text-foreground text-base lg:text-lg leading-relaxed max-w-xl">
+            {hero.description}
+          </p>
 
-          <div className="flex gap-2 lg:gap-4 z-40 w-full lg:w-fit px-5 lg:px-0">
+          <div className="flex gap-3 lg:gap-4 z-40 w-full lg:w-fit px-5 lg:px-0">
             <Link href="free-seminar" className="w-1/2 lg:w-fit">
               <PrimaryButton
                 size="lg"
@@ -70,12 +72,14 @@ const HeroSection = ({ data }: PropsTypes) => {
           </div>
         </div>
 
-        <FadeUpScroll className="w-full z-40" transition={{ duration: 0.3 }}>
-          <CourseMedia
+        <FadeUpScroll
+          className="w-full lg:w-1/2 z-40"
+          transition={{ duration: 0.3 }}
+        >
+          <HeroMedia
             thumbnail={hero.thumbnail}
             name="Moon IT"
             youtubeUrl={hero.youtubeUrl}
-            className="shadow-xl"
           />
         </FadeUpScroll>
       </Container>

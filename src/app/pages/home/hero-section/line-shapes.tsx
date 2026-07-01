@@ -1,22 +1,23 @@
+/**
+ * Subtle, non-interactive background accents that frame the hero. Kept low in
+ * the stacking order so hero content (z-40) always sits on top. Tuned to read
+ * as gentle glows in both light and dark themes.
+ */
 const LineShapes = () => {
   return (
-    <>
-      {/* light moode  */}
-      <div className="absolute hidden h-16 w-[600px] rotate-[-40deg] rounded-3xl bg-sky-400 opacity-10 blur-2xl filter dark:hidden lg:top-24 lg:-right-28 lg:block lg:h-12 lg:w-[600px] lg:opacity-30 lg:blur-2xl xl:-right-40 xl:h-4 xl:w-[700px] xl:opacity-100 z-10"></div>
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+    >
+      {/* Top-right cool glow */}
+      <div className="absolute -top-10 -right-24 h-72 w-72 rounded-full bg-primary-lighter/20 blur-3xl dark:bg-primary/30 lg:h-96 lg:w-96" />
 
-      <div className="absolute hidden h-14 w-[600px] rotate-[-40deg] rounded-3xl bg-secondary opacity-30 blur-2xl filter dark:hidden lg:top-20 lg:-right-28 lg:block lg:h-10 lg:w-[600px] lg:opacity-20 lg:blur-xl xl:-right-40 xl:h-2 xl:w-[800px] xl:opacity-100 z-10"></div>
+      {/* Bottom-left warm accent */}
+      <div className="absolute -bottom-16 -left-24 h-64 w-64 rounded-full bg-secondary/15 blur-3xl dark:bg-secondary/10 lg:h-80 lg:w-80" />
 
-      <div className="absolute h-16 w-[600px] rotate-[-40deg] rounded-3xl bg-sky-400 opacity-10 blur-2xl filter dark:hidden lg:bottom-24 lg:-left-28 lg:h-12 lg:w-[600px] lg:opacity-30 lg:blur-2xl xl:-left-40 xl:h-4 xl:w-[700px] xl:opacity-100 z-10"></div>
-
-      <div className="absolute h-14 w-[600px] rotate-[-40deg] rounded-3xl bg-secondary opacity-30 blur-2xl filter dark:hidden lg:bottom-20 lg:-left-28 lg:h-10 lg:w-[600px] lg:opacity-20 lg:blur-xl xl:-left-40 xl:h-2 xl:w-[800px] xl:opacity-100 z-10"></div>
-
-      {/* dark mode  */}
-      {/* <div className="absolute right-[28%] top-0 hidden h-[150px] w-[200px] rotate-12 rounded-3xl bg-gradient-to-l from-blue-600 to-sky-400 opacity-20 blur-3xl filter dark:block dark:opacity-30 lg:top-44 lg:-right-20 lg:h-72 lg:w-[350px] xl:h-80 xl:w-[500px] z-10"></div> */}
-
-      <div className="absolute left-0 top-0 xl:left-[28%] xl:top-28 rotate-12 rounded-3xl bg-sky-800 opacity-90 blur-3xl filter dark:opacity-30 lg:h-32 lg:w-[450px] hidden dark:block h-44 w-[600px] z-10"></div>
-
-      {/* <div className="absolute bottom-44 -left-64 hidden h-[150px] w-[900px] -rotate-45 rounded-3xl bg-gradient-to-r from-violet-600 to-indigo-800 opacity-30 blur-3xl filter dark:block lg:bottom-24 lg:-left-20 lg:h-28 lg:w-[250px] lg:-rotate-12 lg:opacity-20 xl:h-40 xl:w-[400px] z-10"></div> */}
-    </>
+      {/* Soft radial glow anchored behind the media area (right side on lg) */}
+      <div className="absolute right-0 top-1/2 hidden h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-primary/10 blur-3xl dark:bg-primary/20 lg:block" />
+    </div>
   );
 };
 

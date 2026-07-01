@@ -5,6 +5,6 @@ export type HomeHero = {
   titleHighlight: string; // rendered with the gradient accent
   titleAfter?: string;
   description: string;
-  thumbnail: string; // resolved image URL (Sanity CDN)
-  youtubeUrl?: string; // optional — enables the play overlay + popup
+  thumbnail: string; // resolved image URL (Sanity CDN) — used as the video poster
+  youtubeUrl?: string; // the hero is always a video; optional only to cover the pre-Sanity fallback
 };

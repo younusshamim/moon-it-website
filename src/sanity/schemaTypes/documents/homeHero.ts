@@ -44,14 +44,17 @@ export const homeHero = defineType({
       title: "Thumbnail",
       type: "image",
       options: { hotspot: true },
-      description: "Poster image shown for the hero video.",
+      description:
+        "Poster image shown for the hero video (not shown on its own).",
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: "youtubeUrl",
       title: "YouTube URL",
       type: "url",
-      description: "Optional — enables the play overlay + popup.",
+      description:
+        "The hero is always a video — this powers the play overlay + popup.",
+      validation: (rule) => rule.required(),
     }),
   ],
   preview: {
