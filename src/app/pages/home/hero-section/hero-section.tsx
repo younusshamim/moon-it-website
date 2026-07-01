@@ -2,10 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsStars } from "react-icons/bs";
 import { MdOutlineComputer } from "react-icons/md";
-import BounceScroll from "@/components/animations/BounceScroll";
 import FadeUpScroll from "@/components/animations/FadeUpScroll";
-import SpringyScroll from "@/components/animations/SpringyScroll";
-import WobbleScroll from "@/components/animations/WobbleScroll";
 import { Carousel } from "@/components/carousel";
 import Container from "@/components/container";
 import GradientText from "@/components/gradient-text";
@@ -59,27 +56,12 @@ const HeroSection = () => {
               </PrimaryButton>
             </Link>
           </div>
-
-          {/* <div className="flex items-center gap-2 lg:gap-4 z-40 ">
-            <Image
-              className="w-16 h-auto"
-              sizes="100vw"
-              width={0}
-              height={0}
-              src="/logo/BTEB-Logo.png"
-              alt="Bangladesh Technical Education Board (BTEB)"
-            />
-            <h2 className="font-semibold w-full lg:w-2/4 text-left lg:text-justify text-sm lg:text-base">
-              বাংলাদেশ কারিগরি শিক্ষা বোর্ড কর্তৃক অনুমোদিত আইটি ট্রেনিং
-              ইনস্টিটিউট।
-            </h2>
-          </div> */}
         </div>
 
         <FadeUpScroll className="w-full z-40" transition={{ duration: 0.3 }}>
           <Carousel imgOverlaySlider={true}>
-            {heroImages.map((item, index) => (
-              <CarouselItem key={index}>
+            {heroImages.map((item) => (
+              <CarouselItem key={item}>
                 <Image
                   className="w-full h-[380px] lg:h-[420px] object-cover rounded-card"
                   sizes="100vw"

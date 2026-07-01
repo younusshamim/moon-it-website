@@ -21,7 +21,8 @@ const CourseMedia = ({
   className,
 }: PropsTypes) => {
   const [isOpen, setIsOpen] = useState(false);
-  const embedUrl = youtubeUrl ? getYoutubeEmbedUrl(youtubeUrl) : null;
+  const origin = typeof window !== "undefined" ? window.location.origin : undefined;
+  const embedUrl = youtubeUrl ? getYoutubeEmbedUrl(youtubeUrl, origin) : null;
 
   const thumbnailImage = (
     <Image
@@ -62,6 +63,7 @@ const CourseMedia = ({
               className="absolute inset-0 h-full w-full"
               src={embedUrl}
               title={name}
+              referrerPolicy="strict-origin-when-cross-origin"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />

@@ -21,10 +21,28 @@ export const getYoutubeId = (url: string): string | null => {
 
 /**
  * Builds an autoplaying embed URL for use inside an iframe.
+ *
+ * Uses the privacy-enhanced `youtube-nocookie.com` host and, when an `origin`
+ * is supplied, includes it so YouTube can verify the embedding domain even if
+ * the referer is stripped (e.g. by a host-level `Referrer-Policy`). This avoids
+ * the "This video is unavailable" / watch-on-YouTube overlay on deployed sites.
+ *
  * Returns null when the source url is not a parseable YouTube link.
  */
-export const getYoutubeEmbedUrl = (url: string): string | null => {
+export const getYoutubeEmbedUrl = (
+  url: string,
+  origin?: string,
+): string | null => {
   const id = getYoutubeId(url);
   if (!id) return null;
-  return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+
+  const params = new URLSearchParams({
+    autoplay: "1",
+    mute: "1",
+    playsinline: "1",
+    rel: "0",
+  });
+  if (origin) params.set("origin", origin);
+
+  return `https://www.youtube-nocookie.com/embed/${id}?${params.toString()}`;
 };
