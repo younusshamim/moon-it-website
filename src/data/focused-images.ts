@@ -15,5 +15,5 @@ export const aboutImages = [
   "/images/focused-images/hero12.png",
 ];
 
-export const seminarImage = "/images/focused-images/hero1.jpg";
+export const seminarImage = "/images/focused-images/moon-it-seminar-program.jpg";
 export const chairmanImage = "/instructors/chairman.jpg";

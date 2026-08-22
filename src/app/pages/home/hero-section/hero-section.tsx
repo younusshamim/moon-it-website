@@ -32,7 +32,7 @@ const HeroSection = ({ data }: PropsTypes) => {
     <div className="relative">
       <LineShapes />
 
-      <Container className="pt-6 pb-14 lg:pt-16 lg:pb-20 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
+      <Container className="pt-6 pb-14 lg:pt-16 lg:pb-20 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-5">
         <div className="w-full lg:w-1/2 flex flex-col gap-5 lg:gap-7 z-40 items-center lg:items-start text-center lg:text-start">
           <span className="inline-flex items-center font-bold text-[17px] shadow-md bg-background2 rounded-btn w-fit px-4 pt-2 pb-1">
             <BsStars className="inline text-xl text-primary mr-1" />
