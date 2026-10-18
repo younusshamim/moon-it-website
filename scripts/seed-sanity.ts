@@ -164,7 +164,7 @@ type CourseSeed = {
       discount?: {
         type: "amount" | "percentage";
         value: number;
-        endDate: string;
+        endDate?: string;
       };
     };
   }>;

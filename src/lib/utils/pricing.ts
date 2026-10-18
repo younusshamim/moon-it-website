@@ -30,9 +30,13 @@ export const getEffectivePrice = (pricing: CoursePricing): EffectivePrice => {
 
   let isDiscountActive = false;
   if (discount && feeAfterDiscount > 0 && feeAfterDiscount < fee) {
-    const endOfDay = new Date(discount.endDate);
-    endOfDay.setHours(23, 59, 59, 999);
-    isDiscountActive = new Date() <= endOfDay;
+    if (discount.endDate) {
+      const endOfDay = new Date(discount.endDate);
+      endOfDay.setHours(23, 59, 59, 999);
+      isDiscountActive = new Date() <= endOfDay;
+    } else {
+      isDiscountActive = true;
+    }
   }
 
   return { fee, feeAfterDiscount, isDiscountActive, discount };

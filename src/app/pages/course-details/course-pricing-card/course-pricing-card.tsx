@@ -102,7 +102,7 @@ const CoursePricingCard = ({ course }: { course: Course }) => {
               )}
             </div>
 
-            {effective.isDiscountActive && effective.discount && (
+            {effective.isDiscountActive && effective.discount?.endDate && (
               <p className="text-xs font-medium text-accent-foreground">
                 অফার শেষ{" "}
                 <NumSpan>

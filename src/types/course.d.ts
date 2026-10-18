@@ -4,7 +4,7 @@ import { CategoryName } from "@/data/categories";
 export type CourseDiscount = {
   type: "amount" | "percentage";
   value: number;
-  endDate: string; // "MM/DD/YYYY" — matches the legacy date parsing format
+  endDate?: string | null; // "MM/DD/YYYY" — matches the legacy date parsing format; empty = no end date
 };
 
 export type CoursePricing = {

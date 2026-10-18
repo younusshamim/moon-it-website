@@ -29,17 +29,20 @@ export const courseDiscount = defineType({
     }),
     defineField({
       name: "endDate",
-      title: "Offer Ends On",
+      title: "Offer Ends On (optional)",
       type: "date",
-      description: "The discount is active until the end of this day.",
-      validation: (rule) => rule.required(),
+      description:
+        "The discount is active until the end of this day. Leave empty for a discount with no end date.",
     }),
   ],
   preview: {
     select: { type: "type", value: "value", endDate: "endDate" },
     prepare({ type, value, endDate }) {
       const label = type === "percentage" ? `${value}%` : `৳${value}`;
-      return { title: `${label} off`, subtitle: `Ends ${endDate ?? "—"}` };
+      return {
+        title: `${label} off`,
+        subtitle: endDate ? `Ends ${endDate}` : "No end date",
+      };
     },
   },
 });
